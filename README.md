@@ -2,7 +2,7 @@
 
 > 소모품을 바꿀 때 차의 누적 주행거리를 기록해, 교체 후 달린 거리와 남은 정도를 한눈에 보여 주는 Pleos Connect 차량용 앱
 
-- 팀명: bh
+- 팀명: 777kg
 - 출품: 현대자동차그룹 차량용 앱 개발 공모전
 - 플랫폼: Pleos Connect(Android Automotive OS), 카테고리 Mobility Services, 정차 중 전용
 
@@ -24,7 +24,7 @@
 데이터는 차량 안에만 저장되며 서버로 보내지 않습니다([개인정보처리방침](docs/store/privacy-policy.html)).
 
 ## APK 위치
-- [`apk/bh_내차량소모품_release.apk`](apk/bh_내차량소모품_release.apk) — release 빌드, 정식 키로 서명(APK Signature Scheme v2), 약 11 MB
+- [`apk/777kg_내차량소모품_release.apk`](apk/777kg_내차량소모품_release.apk) — release 빌드, 정식 키로 서명(APK Signature Scheme v2), 약 11 MB
 - 패키지: `com.pleos.consumables`, 실행 Activity: `com.pleos.consumables.MainActivity`
 
 ## 테스트 환경
@@ -53,7 +53,7 @@
 ### 1) APK로 실행
 에뮬레이터를 켠 뒤 설치하고 실행합니다.
 ```bash
-adb install -r apk/bh_내차량소모품_release.apk
+adb install -r apk/777kg_내차량소모품_release.apk
 ```
 ```bash
 adb shell am start -n com.pleos.consumables/com.pleos.consumables.MainActivity
