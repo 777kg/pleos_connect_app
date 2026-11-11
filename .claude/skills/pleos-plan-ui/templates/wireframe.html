@@ -1,0 +1,99 @@
+<!doctype html>
+<!-- 와이어프레임 템플릿 (pleos-plan-ui). 복사해서 docs/plan/ui/wireframes/S01-<이름>.html 로 저장 후 채운다.
+     규칙: 외부 리소스 금지, 회색조, 프레임마다 상태 이름, 요소마다 번호 주석. -->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S01 화면이름 · 와이어프레임</title>
+<style>
+  :root { --ink:#222; --line:#888; --fill:#eee; --muted:#666; --bg:#fafafa; --note:#c33; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 24px 16px; font: 14px/1.5 system-ui, sans-serif; color: var(--ink); background: var(--bg); }
+  header { max-width: 1200px; margin: 0 auto 24px; }
+  header h1 { font-size: 20px; margin: 0 0 4px; }
+  .meta { color: var(--muted); font-size: 12px; }
+  .board { display: flex; flex-wrap: wrap; gap: 32px; max-width: 1200px; margin: 0 auto; align-items: flex-start; }
+  figure { margin: 0; }
+  figcaption { font-weight: 600; margin-bottom: 8px; }
+  .frame { border: 2px solid var(--ink); background: #fff; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  .p1 { width: 360px; height: 640px; }     /* portrait 1칸: 비율 가정 */
+  .p2 { width: 720px; height: 640px; }     /* landscape 2칸: 비율 가정 */
+  .frame .bar { height: 28px; border-bottom: 1px dashed var(--line); font-size: 11px; color: var(--muted); padding: 4px 8px; }
+  .body { flex: 1; padding: 16px; display: flex; flex-direction: column; gap: 12px; overflow: auto; }
+  .cols { display: flex; gap: 12px; flex: 1; }
+  .cols > * { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+  .box { border: 1px solid var(--line); background: var(--fill); padding: 12px; border-radius: 4px; position: relative; }
+  .btn { border: 2px solid var(--ink); padding: 14px; text-align: center; font-weight: 600; border-radius: 6px; min-height: 56px; }
+  .muted { color: var(--muted); font-size: 12px; }
+  .tag { position: absolute; top: -10px; right: -10px; background: var(--note); color: #fff; border-radius: 50%; width: 22px; height: 22px; font-size: 12px; text-align: center; line-height: 22px; }
+  .size { color: var(--muted); font-size: 11px; margin-top: 6px; }
+  .notes { max-width: 1200px; margin: 32px auto 0; }
+  .notes ol { padding-left: 20px; }
+  .notes td, .notes th { border: 1px solid #ccc; padding: 4px 8px; text-align: left; vertical-align: top; }
+  .notes table { border-collapse: collapse; width: 100%; }
+</style>
+</head>
+<body>
+<header>
+  <h1>S01 화면이름 — 와이어프레임</h1>
+  <div class="meta">버전 v1 · 2026-10-27 · 근거: PLAN.md §4·§5 · UI 단계: wireframe</div>
+  <div class="meta">프레임 크기는 비율 가정(1칸 360×640, 2칸 720×640). 실제 해상도·dp는 확인 필요.</div>
+</header>
+
+<div class="board">
+  <!-- 프레임 1: portrait 1칸 · 정상 -->
+  <figure>
+    <figcaption>① portrait 1칸 · 정상</figcaption>
+    <div class="frame p1">
+      <div class="bar">앱 영역 (Driving view 옆 1칸)</div>
+      <div class="body">
+        <div class="box"><span class="tag">1</span><strong>제목</strong><div class="muted">보조 문구</div></div>
+        <div class="box"><span class="tag">2</span>카드</div>
+        <div class="btn"><span class="tag">3</span>주요 버튼</div>
+      </div>
+    </div>
+    <div class="size">크기 가정</div>
+  </figure>
+
+  <!-- 프레임 2: landscape 2칸 · 정상 (같은 기능) -->
+  <figure>
+    <figcaption>② landscape 2칸 · 정상</figcaption>
+    <div class="frame p2">
+      <div class="bar">앱 영역 (2칸)</div>
+      <div class="body">
+        <div class="box"><span class="tag">1</span><strong>제목</strong></div>
+        <div class="cols"><div><div class="box"><span class="tag">2</span>카드</div></div><div><div class="box">카드</div></div></div>
+        <div class="btn"><span class="tag">3</span>주요 버튼</div>
+      </div>
+    </div>
+  </figure>
+
+  <!-- 프레임 3: 주행 규제 (정차 중 전용 앱이면 값·조작 숨김) -->
+  <figure>
+    <figcaption>③ 주행 규제</figcaption>
+    <div class="frame p1">
+      <div class="bar">앱 영역 (1칸)</div>
+      <div class="body" style="justify-content:center;text-align:center">
+        <div class="box"><span class="tag">4</span>정차 중에만 볼 수 있습니다</div>
+      </div>
+    </div>
+  </figure>
+</div>
+
+<section class="notes">
+  <h2>주석</h2>
+  <table>
+    <tr><th>#</th><th>요소</th><th>내용·이유</th><th>데이터 출처(API·퍼미션)</th><th>규칙</th></tr>
+    <tr><td>1</td><td>제목</td><td></td><td>—</td><td>적은 텍스트</td></tr>
+    <tr><td>2</td><td>카드</td><td></td><td></td><td>capability 없으면 미지원 표시</td></tr>
+    <tr><td>3</td><td>버튼</td><td></td><td>—</td><td>큰 터치 영역, 2초 넘으면 로딩 표시</td></tr>
+    <tr><td>4</td><td>규제 안내</td><td></td><td>CarUxRestrictions</td><td>값·조작 숨김</td></tr>
+  </table>
+  <h2>흐름</h2>
+  <ol><li>진입 → …</li></ol>
+  <h2>확인 필요</h2>
+  <ul><li>실제 1칸/2칸 해상도·dp, UI Design Guide 수치</li></ul>
+</section>
+</body>
+</html>

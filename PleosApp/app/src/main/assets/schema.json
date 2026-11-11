@@ -1,0 +1,58 @@
+{
+  "packageName": "com.pleos.consumables",
+  "appDescription": "A vehicle consumables log that records the odometer reading at each replacement and shows the distance driven since then against a distance the driver sets.",
+  "version": "0.1.0",
+  "actionCalls": [
+    {
+      "type": "function",
+      "function": {
+        "name": "GET_CONSUMABLE_STATUS",
+        "description": "Report the distance driven since the last recorded replacement of one consumable item and the share left of the replacement distance the driver set.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "item": {
+              "type": "string",
+              "description": "The consumable item to look up.",
+              "enum": ["engine_oil", "engine_air_filter", "wiper_blade", "cabin_air_filter", "tire", "brake_pad", "brake_disc", "tire_rotation", "wheel_alignment", "brake_fluid", "coolant", "12v_battery", "spark_plug", "drive_belt", "transmission_oil", "fuel_filter", "reduction_gear_oil", "battery_coolant"]
+            }
+          },
+          "required": ["item"]
+        },
+        "component": "service"
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "LIST_CONSUMABLES_BY_REMAINING",
+        "description": "List the consumable items with the smallest share left of the replacement distance the driver set.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        },
+        "component": "service"
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "OPEN_CONSUMABLE_RECORD",
+        "description": "Open the replacement record screen of one consumable item in the app.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "item": {
+              "type": "string",
+              "description": "The consumable item whose record screen to open.",
+              "enum": ["engine_oil", "engine_air_filter", "wiper_blade", "cabin_air_filter", "tire", "brake_pad", "brake_disc", "tire_rotation", "wheel_alignment", "brake_fluid", "coolant", "12v_battery", "spark_plug", "drive_belt", "transmission_oil", "fuel_filter", "reduction_gear_oil", "battery_coolant"]
+            }
+          },
+          "required": ["item"]
+        },
+        "component": "activity"
+      }
+    }
+  ]
+}

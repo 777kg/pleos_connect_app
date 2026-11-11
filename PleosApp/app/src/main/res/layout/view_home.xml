@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S05 홈: 제목·보기 전환(탑뷰/목록)·설정 → `가장 임박` 요약 → 탑뷰 또는 임박 순 목록.
+     탑뷰는 가운데 반실사 차량 사진(docs/assets/consumables/vehicle_topview.webp를 1:2로 자른 것), 양옆에 켠 소모품 타일(차 앞쪽 항목부터). 목록은 잔여% 낮은 순(PLAN.md §3 기능 6).
+     설정(S07)에서 보일 항목을 켜고 끕니다. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView style="@style/ScreenTitle" android:layout_width="0dp" android:layout_weight="1" android:text="@string/app_title" />
+        <!-- S05-10 보기 전환 세그먼트 -->
+        <Button android:id="@+id/viewTopviewButton" style="@style/Widget.PleosApp.Button.Tab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0dp" android:layout_marginEnd="-1dp" android:text="@string/view_topview" />
+        <Button android:id="@+id/viewListButton" style="@style/Widget.PleosApp.Button.Tab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0dp" android:layout_marginEnd="@dimen/gap" android:text="@string/view_list" />
+        <Button android:id="@+id/settingsButton" style="@style/Widget.PleosApp.Button.Back" android:layout_marginEnd="0dp" android:text="@string/settings" />
+    </LinearLayout>
+
+    <!-- S05-09 가장 임박 요약: 누르면 그 항목 S01 -->
+    <Button
+        android:id="@+id/urgentSummaryButton"
+        style="@style/Widget.PleosApp.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap"
+        android:ellipsize="end"
+        android:gravity="start|center_vertical"
+        android:maxLines="1" />
+
+    <!-- S05-11 임박 순 목록(행은 view_home_row) -->
+    <ScrollView
+        android:id="@+id/listScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/gap_small"
+        android:layout_weight="1">
+        <LinearLayout
+            android:id="@+id/homeList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/topviewRow"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/gap"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <ScrollView
+            android:fillViewport="true"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:id="@+id/leftColumn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" />
+        </ScrollView>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/gap_small"
+            android:layout_marginEnd="@dimen/gap_small">
+            <ImageView
+                android:id="@+id/vehicleImage"
+                android:layout_width="@dimen/vehicle_width"
+                android:layout_height="@dimen/vehicle_height"
+                android:layout_gravity="center"
+                android:contentDescription="@string/vehicle_topview_alt"
+                android:scaleType="fitCenter"
+                android:src="@drawable/vehicle_topview_photo" />
+        </FrameLayout>
+
+        <ScrollView
+            android:fillViewport="true"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:id="@+id/rightColumn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" />
+        </ScrollView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/noItemsText"
+        style="@style/CheckCardValue"
+        android:gravity="center"
+        android:text="@string/no_items_enabled" />
+</LinearLayout>

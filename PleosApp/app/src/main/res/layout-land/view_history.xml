@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S02 전체 이력(가로 2칸): 위 뒤로·제목·항목 탭, 왼쪽 안내·전체 삭제, 오른쪽 기록 목록.
+     세로와 같은 ID·같은 기능(UI_SPEC S02). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <Button android:id="@+id/historyBackButton" style="@style/Widget.PleosApp.Button.Back" android:text="@string/back" />
+        <TextView style="@style/ScreenTitle" android:layout_width="0dp" android:layout_weight="1" android:text="@string/history_title" />
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap"
+        android:scrollbars="none">
+        <LinearLayout
+            android:id="@+id/historyTabs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/gap_small"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <!-- S02-08 내 교체 주기 통계(PLAN.md §3 기능 7): 교체 횟수·평균 간격. 권고가 아닌 기록 요약 -->
+            <LinearLayout
+                android:id="@+id/statsCard"
+                style="@style/CheckCard"
+                android:layout_marginTop="0dp"
+                android:focusable="true">
+                <TextView android:id="@+id/statsCountText" style="@style/CheckCardTitle" />
+                <TextView android:id="@+id/statsAverageText" style="@style/CheckCardValue" />
+                <TextView android:id="@+id/statsExcludedText" style="@style/CheckCardLabel" />
+                <TextView style="@style/CheckCardLabel" android:text="@string/stats_note" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/deleteAllButton"
+                style="@style/Widget.PleosApp.Button.Back"
+                android:layout_marginTop="@dimen/gap"
+                android:text="@string/delete_all" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/gap"
+            android:layout_weight="2"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/emptyText"
+                style="@style/CheckCardValue"
+                android:text="@string/state_no_record" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <LinearLayout
+                    android:id="@+id/recordList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

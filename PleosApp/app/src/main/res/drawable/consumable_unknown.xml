@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 대표 사진이 없는 항목의 대체 이미지(사선 무늬). 흰 바탕 기준 연한 회색. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp" android:height="96dp"
+    android:viewportWidth="96" android:viewportHeight="96">
+    <path android:fillColor="#FFEDEEF2" android:pathData="M0,0h96v96h-96z" />
+    <path android:strokeColor="#FFC7C9CE" android:strokeWidth="6"
+        android:pathData="M-24,24L24,-24M-24,56L56,-24M-24,88L88,-24M8,104L104,8M40,104L104,40M72,104L104,72" />
+</vector>

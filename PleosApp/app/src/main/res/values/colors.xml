@@ -1,0 +1,33 @@
+<resources>
+    <!--
+        Pleos Connect 기본 앱(차량 설정 > 잠금 화면)과 UI Design Guide 라이트 토큰 기준(2026-11-09).
+        Grayscale(light): basic_00 #FFFFFF, basic_50 #F7F8FA, basic_100 #EDEEF2, basic_200 #E0E1E6, basic_300 #C7C9CE,
+        basic_400 #A4A8AE, basic_500 #686A72, basic_600 #44464E, basic_700 #313236, basic_800 #1D1E21, basic_900 #131417.
+        흰 바탕, 검정 글자, 얇은 회색 테두리의 각진 버튼, 선택·주요 동작은 검정 채움. 글자 대비 4.5:1 이상.
+    -->
+    <color name="background_primary">#FFFFFFFF</color>   <!-- basic_00 -->
+    <color name="background_secondary">#FFF7F8FA</color> <!-- basic_50: 입력칸·사진 틀 -->
+    <color name="surface_high">#FFFFFFFF</color>         <!-- 카드: 흰 면 + 테두리 -->
+    <color name="surface_pressed">#FFEDEEF2</color>      <!-- basic_100: 누름 -->
+    <color name="divider">#FFE0E1E6</color>              <!-- basic_200: 카드 테두리·구분선 -->
+    <color name="outline">#FF8E9198</color>              <!-- 버튼 테두리(기본 앱 세그먼트 버튼) -->
+
+    <color name="text_primary">#FF131417</color>         <!-- basic_900 -->
+    <color name="text_secondary">#FF44464E</color>       <!-- basic_600 -->
+    <color name="text_tertiary">#FF686A72</color>        <!-- basic_500: 설명 문구 -->
+    <color name="text_disabled">#FFC7C9CE</color>        <!-- basic_300 -->
+    <color name="text_on_filled">#FFFFFFFF</color>       <!-- 검정 채움 위 글자 -->
+    <color name="text_error">#FFD32F2F</color>
+
+    <!-- 버튼: 기본은 흰 면 + 회색 테두리, 선택·주요 동작은 검정 채움(기본 앱 세그먼트 버튼) -->
+    <color name="button_basic">#FFFFFFFF</color>
+    <color name="button_basic_pressed">#FFEDEEF2</color>
+    <color name="button_basic_disabled">#FFF7F8FA</color>
+    <color name="button_filled">#FF000000</color>
+    <color name="button_filled_pressed">#FF313236</color>
+    <color name="button_filled_disabled">#FFE0E1E6</color>
+
+    <!-- S07 스위치: 꺼짐은 회색 트랙, 켜짐은 검정 트랙, 손잡이는 흰색 -->
+    <color name="switch_track_off">#FFA4A8AE</color>
+    <color name="switch_track_on">#FF131417</color>
+</resources>

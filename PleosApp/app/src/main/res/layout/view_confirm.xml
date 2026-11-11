@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S04 새 교체 기록 확인. 수동 입력 없음, 차량 수신 거리·조회 시각을 한 묶음으로 보여 줍니다. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView style="@style/ScreenTitle" android:text="@string/confirm_record_title" />
+
+        <LinearLayout style="@style/CheckCard">
+            <TextView android:id="@+id/confirmItemName" style="@style/CheckCardTitle" />
+            <TextView android:id="@+id/receivedKmText" style="@style/CheckCardValue" android:textStyle="bold" />
+            <TextView android:id="@+id/confirmCheckedAtText" style="@style/CheckCardValue" />
+            <TextView android:id="@+id/receivedNoteText" style="@style/CheckCardValue" android:text="@string/received_note" />
+        </LinearLayout>
+
+        <!-- S04-07 상태/기준 안내 -->
+        <TextView android:id="@+id/confirmInfoText" style="@style/CheckCardValue" />
+
+        <LinearLayout style="@style/ButtonRow">
+            <Button android:id="@+id/setBaselineButton" style="@style/Widget.PleosApp.Button.Row" android:text="@string/set_baseline" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/ButtonRow" android:layout_marginTop="@dimen/gap">
+            <Button android:id="@+id/confirmCancelButton" style="@style/Widget.PleosApp.Button.Row" android:text="@string/cancel" />
+            <Button android:id="@+id/saveRecordButton" style="@style/Widget.PleosApp.Button.Row.Filled" android:text="@string/save_record" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

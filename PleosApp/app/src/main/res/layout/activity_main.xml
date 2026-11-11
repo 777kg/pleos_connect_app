@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- portrait(1칸): 화면 하나씩(S05 → S01 → S04/S06). layout-land와 같은 ID·같은 기능을 둡니다(기능 패리티). -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:padding="@dimen/screen_padding">
+
+    <include android:id="@+id/home" layout="@layout/view_home" />
+    <include android:id="@+id/detail" layout="@layout/view_detail" />
+    <include android:id="@+id/settings" layout="@layout/view_settings" />
+    <include android:id="@+id/history" layout="@layout/view_history" />
+    <include android:id="@+id/edit" layout="@layout/view_edit" />
+    <include android:id="@+id/confirm" layout="@layout/view_confirm" />
+    <include android:id="@+id/baseline" layout="@layout/view_baseline" />
+
+    <!-- 주행 규제 중: 값·조작 없이 안내만(UI_SPEC 공통 상태 표 '주행 규제') -->
+    <TextView
+        android:id="@+id/restrictedMessage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/restricted_message"
+        android:textSize="@dimen/text_title"
+        android:visibility="gone" />
+</FrameLayout>

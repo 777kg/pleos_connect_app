@@ -1,0 +1,7 @@
+<resources>
+    <!-- 기본 앱 버튼·카드처럼 각진 모서리. 버튼 테두리 두께. -->
+    <dimen name="button_stroke">1dp</dimen>
+    <dimen name="button_stroke_selected">3dp</dimen>
+    <!-- S02 선택 탭 아래쪽 막대 -->
+    <dimen name="tab_indicator_height">4dp</dimen>
+</resources>

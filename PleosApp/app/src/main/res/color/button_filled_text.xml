@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 주요 버튼 글자: 검정 채움 위 흰 글자, 비활성은 연회색 면 위 회색 글자. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/outline" android:state_enabled="false" />
+    <item android:color="@color/text_on_filled" />
+</selector>

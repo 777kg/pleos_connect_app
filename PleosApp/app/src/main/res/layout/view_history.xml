@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S02 전체 이력: 뒤로·제목 → 항목 탭 → 기록 목록 → 공유 안내·전체 삭제. 주석의 ID는 UI_SPEC S02-xx. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- S02-01 뒤로 → S01 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <Button android:id="@+id/historyBackButton" style="@style/Widget.PleosApp.Button.Back" android:text="@string/back" />
+        <TextView style="@style/ScreenTitle" android:layout_width="0dp" android:layout_weight="1" android:text="@string/history_title" />
+    </LinearLayout>
+
+    <!-- S02-02 항목 탭(홈에 켠 항목, 차 앞쪽부터). 많으면 가로 스크롤 -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap"
+        android:scrollbars="none">
+        <LinearLayout
+            android:id="@+id/historyTabs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
+    <!-- S02-08 내 교체 주기 통계(PLAN.md §3 기능 7): 교체 횟수·평균 간격. 권고가 아닌 기록 요약 -->
+    <LinearLayout
+        android:id="@+id/statsCard"
+        style="@style/CheckCard"
+        android:layout_marginTop="@dimen/gap_small"
+        android:focusable="true">
+        <TextView android:id="@+id/statsCountText" style="@style/CheckCardTitle" />
+        <TextView android:id="@+id/statsAverageText" style="@style/CheckCardValue" />
+        <TextView android:id="@+id/statsExcludedText" style="@style/CheckCardLabel" />
+        <TextView style="@style/CheckCardLabel" android:text="@string/stats_note" />
+    </LinearLayout>
+
+    <!-- S02-03 기록 목록(행은 view_record_row) -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/gap_small"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/recordList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/emptyText"
+        style="@style/CheckCardValue"
+        android:text="@string/state_no_record" />
+
+    <!-- S02-05 전체 삭제(오른쪽 정렬) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_small"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/deleteAllButton"
+            style="@style/Widget.PleosApp.Button.Back"
+            android:layout_marginEnd="0dp"
+            android:text="@string/delete_all" />
+    </LinearLayout>
+</LinearLayout>

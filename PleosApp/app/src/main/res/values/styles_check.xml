@@ -1,0 +1,57 @@
+<resources>
+    <!-- 크기는 Pleos Connect UI Design Guide Typography(160dpi 기준 px=dp)와 기본 앱(차량 제어) 실측을 참고한 값입니다.
+         Headline 60/56/48, Title 40/36/32, Body 30/28/26, Label 24/20. 실제 차량 해상도별 조정은 확인 필요. -->
+
+    <!-- 화면 제목(Title Medium) -->
+    <style name="ScreenTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_title</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- 정보 카드: 둥근 모서리, 테두리 없이 한 단계 밝은 면 -->
+    <style name="CheckCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">@dimen/card_padding</item>
+        <item name="android:layout_marginTop">@dimen/gap</item>
+        <item name="android:background">@drawable/card_background</item>
+    </style>
+
+    <!-- 보조 값(Body Small, 84%) -->
+    <style name="CheckCardSecondary" parent="CheckCardValue">
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <style name="CheckCardTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_subtitle</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- 본문(Body Small) -->
+    <style name="CheckCardValue">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textSize">@dimen/text_body</item>
+    </style>
+
+    <!-- 보조 문구(Label Medium) -->
+    <style name="CheckCardLabel" parent="CheckCardValue">
+        <item name="android:textSize">@dimen/text_label</item>
+        <item name="android:textColor">@color/text_tertiary</item>
+    </style>
+
+    <!-- 버튼 줄: 버튼을 가로로 나눠 담습니다 -->
+    <style name="ButtonRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/gap_small</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+</resources>

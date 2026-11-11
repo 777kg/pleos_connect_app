@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S05-11 임박 순 목록 한 줄: 사진(단계 사진, 계산 불가면 흐린 대표 사진) + 이름 + 상태. 누르면 그 항목 S01. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="-1dp"
+    android:background="@drawable/item_selected_background"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/touch_target_min"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/gap"
+    android:paddingTop="8dp"
+    android:paddingEnd="@dimen/gap"
+    android:paddingBottom="8dp">
+
+    <ImageView
+        android:id="@+id/rowImage"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/image_frame"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/rowName"
+        style="@style/CheckCardValue"
+        android:layout_width="0dp"
+        android:layout_marginStart="@dimen/gap"
+        android:layout_marginTop="0dp"
+        android:layout_weight="1"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/rowStatus"
+        style="@style/CheckCardSecondary"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="@dimen/gap"
+        android:layout_marginTop="0dp" />
+</LinearLayout>

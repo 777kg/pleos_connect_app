@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S07 스위치 트랙: 켜짐 검정, 꺼짐 회색(기본 앱 토글), 비활성은 연하게. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/divider" android:state_enabled="false" />
+    <item android:color="@color/switch_track_on" android:state_checked="true" />
+    <item android:color="@color/switch_track_off" />
+</selector>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S07 스위치 손잡이: 항상 흰색, 비활성은 연한 회색. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/background_secondary" android:state_enabled="false" />
+    <item android:color="@color/background_primary" />
+</selector>

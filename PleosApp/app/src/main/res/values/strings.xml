@@ -1,0 +1,214 @@
+<resources>
+    <!-- 키·문구는 docs/plan/service-mileage-log/ui/UI_SPEC.md 문구 목록을 따릅니다. 정비 판정·권고처럼 보이지 않게 씁니다. -->
+    <string name="app_name">내 차량 소모품</string>
+    <string name="app_title">내 차량 소모품</string>
+
+    <!-- S05 차량 탑뷰 홈 -->
+    <string name="select_item">소모품을 선택하세요</string>
+    <string name="oil_name">엔진오일</string>
+    <string name="tire_name">타이어</string>
+    <string name="filter_name">에어컨 필터</string>
+    <string name="air_filter_name">엔진 에어필터</string>
+    <string name="wiper_name">와이퍼</string>
+    <string name="brake_pad_name">브레이크 패드</string>
+    <string name="brake_disc_name">브레이크 디스크</string>
+    <string name="tire_rotation_name">타이어 위치 교환</string>
+    <string name="alignment_name">휠 얼라인먼트</string>
+    <string name="brake_fluid_name">브레이크액</string>
+    <string name="coolant_name">냉각수</string>
+    <string name="battery_name">12V 배터리</string>
+    <string name="spark_plug_name">점화 플러그</string>
+    <string name="drive_belt_name">구동 벨트</string>
+    <string name="transmission_oil_name">변속기 오일</string>
+    <string name="fuel_filter_name">연료 필터</string>
+    <string name="reduction_oil_name">감속기 오일</string>
+    <string name="battery_coolant_name">배터리 냉각수</string>
+
+    <!-- S07 소모품 설정 -->
+    <string name="settings">설정</string>
+    <string name="settings_title">홈에 보일 소모품</string>
+    <string name="settings_hint">켠 항목만 홈에 보입니다. 꺼도 기록은 남습니다.</string>
+    <string name="group_common">공통</string>
+    <string name="group_ice">내연기관</string>
+    <string name="group_ev">전기차</string>
+    <string name="vehicle_kind_label">차량 동력: %1$s</string>
+    <string name="vehicle_kind_unknown">확인할 수 없음</string>
+    <string name="vehicle_kind_ice">내연기관</string>
+    <string name="vehicle_kind_ev">전기차</string>
+    <string name="vehicle_kind_hybrid">하이브리드</string>
+    <string name="vehicle_kind_auto">자동</string>
+    <string name="rebaseline">기준 다시 잡기</string>
+    <string name="rebaseline_confirm">지금 누적 %1$s km를 새 기준으로 기록합니다. 이전 기록은 이력에 남습니다.</string>
+    <string name="rebased_badge">기준 다시 잡음</string>
+    <string name="vehicle_kind_source_auto">%1$s (자동 판정)</string>
+    <string name="vehicle_kind_source_manual">%1$s (직접 선택)</string>
+    <string name="no_items_enabled">설정에서 소모품을 켜세요</string>
+    <string name="setting_row_a11y">%1$s, %2$s</string>
+    <string name="state_on">켜짐</string>
+    <string name="state_off">꺼짐</string>
+    <string name="vehicle_topview_alt">차량 위에서 본 그림. 엔진오일은 보닛, 타이어는 네 바퀴, 에어컨 필터는 실내 대시보드 위치</string>
+
+    <!-- S01 소모품 상세 -->
+    <string name="remaining_percent">잔여 %1$d%%</string>
+    <string name="elapsed_km">교체 후 달린 거리 %1$s km</string>
+    <string name="last_replacement">교체 시점 누적 %1$s km · %2$s</string>
+    <string name="baseline_km">내가 정한 교체 거리 %1$s km</string>
+    <string name="baseline_unset">교체 거리를 정하세요</string>
+    <string name="distance_reached">정한 교체 거리를 다 달렸습니다</string>
+    <string name="edited_source">사용자 수정 · 차량 계측값 아님</string>
+    <string name="current_km">누적 주행거리 %1$s km</string>
+    <string name="checked_at">%1$s 조회</string>
+    <string name="edit_baseline">교체 거리 수정</string>
+    <string name="add_record">교체 기록</string>
+    <string name="refresh">다시 확인</string>
+    <string name="refreshing">확인 중…</string>
+    <string name="image_alt_step">%1$s, 잔여 %2$d퍼센트, 사진 단계 %3$d퍼센트</string>
+    <string name="image_alt_state">%1$s, %2$s</string>
+
+    <!-- 상태 -->
+    <string name="state_checking">확인 중</string>
+    <string name="state_unsupported">지원하지 않는 차량 기능</string>
+    <string name="state_permission">권한 없음</string>
+    <string name="state_failed">값을 읽지 못했습니다</string>
+    <string name="state_no_record">기록 없음</string>
+    <string name="state_comparison_blocked">거리 비교 불가</string>
+    <string name="comparison_blocked">거리 비교 불가: 현재 거리가 마지막 기록보다 작습니다.</string>
+
+    <!-- S04 새 기록 확인 -->
+    <string name="confirm_record_title">새 교체 기록 확인</string>
+    <string name="received_km">지금 누적 주행거리 %1$s km</string>
+    <string name="received_note">차량에서 받은 값이며 직접 입력한 값이 아닙니다.</string>
+    <string name="set_baseline">교체 거리 정하기</string>
+    <string name="baseline_optional">교체 거리 없이도 기록됩니다. 잔여%는 거리를 정하면 보입니다.</string>
+    <string name="save_record">기록 저장</string>
+    <string name="cancel">취소</string>
+
+    <!-- S06 교체 거리(코드 이름은 baseline) 설정·수정 -->
+    <string name="baseline_title_item">교체 거리 설정·수정 · %1$s</string>
+    <string name="baseline_input_hint">예: 10000</string>
+    <string name="km_unit">km</string>
+    <string name="range_hint">100~100,000 km만 저장할 수 있습니다.</string>
+    <string name="minus_100">−100 km</string>
+    <string name="plus_100">+100 km</string>
+    <string name="save_baseline">저장</string>
+
+    <!-- S02 전체 이력 -->
+    <string name="history">이력</string>
+    <string name="history_title">전체 이력</string>
+    <string name="latest_badge">마지막 기록 · 달린 거리 계산 기준</string>
+    <string name="blocked_kept">거리 비교 불가 · 기록 보존</string>
+    <string name="record_row">%1$s · %2$s km · %3$s</string>
+    <string name="edit">수정</string>
+    <string name="delete">삭제</string>
+    <string name="delete_all">전체 삭제</string>
+    <string name="delete_one_confirm">%1$s · %2$s km · %3$s 기록 하나를 삭제합니다.</string>
+    <string name="delete_all_confirm">이 기기에 저장된 모든 교체 기록과 항목별 교체 거리를 삭제합니다.</string>
+    <string name="irreversible">되돌릴 수 없습니다.</string>
+
+    <!-- S03 기록 수정 -->
+    <string name="edit_record_title">기록 수정 · %1$s</string>
+    <string name="record_distance">교체 시점 누적 주행거리 %1$s km</string>
+    <string name="replacement_time">교체 시각 %1$s</string>
+    <string name="minus_day">−1일</string>
+    <string name="plus_day">+1일</string>
+    <string name="minus_hour">−1시간</string>
+    <string name="plus_hour">+1시간</string>
+    <string name="minus_10min">−10분</string>
+    <string name="plus_10min">+10분</string>
+    <string name="before_after">변경 전 %1$s\n변경 후 %2$s</string>
+    <string name="latest_may_change">교체 시각을 바꾸면 달린 거리를 계산하는 기준 기록이 바뀔 수 있습니다.</string>
+    <string name="save_changes">변경 저장</string>
+    <string name="keep_editing">계속 수정</string>
+    <string name="record_not_found">기록을 찾을 수 없습니다</string>
+
+    <string name="back">뒤로</string>
+
+    <string name="restricted_message">정차 중에만 사용할 수 있습니다</string>
+    <!-- S02 선택 탭 접근성 상태(QA-017) -->
+    <string name="tab_selected_state">선택됨</string>
+    <!-- S05 홈 요약·보기 전환(PLAN.md §3 기능 6) -->
+    <string name="view_topview">탑뷰</string>
+    <string name="view_list">목록</string>
+    <string name="urgent_summary">가장 임박: %1$s 잔여 %2$d%%</string>
+    <string name="urgent_summary_reached">가장 임박: %1$s · 정한 교체 거리를 다 달렸습니다</string>
+    <string name="list_status_normal">잔여 %1$d%% · 교체 후 달린 거리 %2$s km</string>
+
+    <!-- S02 내 교체 주기 통계(PLAN.md §3 기능 7) -->
+    <string name="stats_count">교체 %1$d회</string>
+    <string name="stats_average">평균 간격 %1$s km · %2$s</string>
+    <string name="stats_months">%1$s개월</string>
+    <string name="stats_under_month">1개월 미만</string>
+    <string name="stats_need_two">기록이 2건 이상이면 평균 간격을 보여 줍니다</string>
+    <string name="stats_no_interval">평균을 낼 간격이 없습니다</string>
+    <string name="stats_excluded">평균에서 뺀 간격: %1$s</string>
+    <string name="stats_excluded_same">주행거리가 같은 간격 %1$d개</string>
+    <string name="stats_excluded_decreased">주행거리가 줄어든 간격 %1$d개</string>
+    <string name="stats_note">내 기록 기준 · 정비 권장 아님</string>
+    <!-- S06 보조 칸(S06-09~11) -->
+    <string name="baseline_presets_title">빠른 선택</string>
+    <string name="km_value">%1$s km</string>
+    <string name="not_recommendation">권장값이 아닌 사용자 선택지</string>
+    <string name="baseline_my_average_title">내 기록 참고</string>
+    <string name="baseline_my_average">내 평균 교체 간격 %1$s km (교체 %2$d회)</string>
+    <string name="baseline_use_average">이 값으로 채우기</string>
+    <string name="baseline_preview_title">미리보기</string>
+    <string name="baseline_preview_remaining">이 교체 거리면 지금 잔여 %1$d%%</string>
+    <string name="baseline_preview_reached">이 교체 거리면 이미 다 달렸습니다</string>
+    <string name="baseline_preview_detail">교체 후 달린 거리 %1$s km · 교체 거리 %2$s km</string>
+    <string name="baseline_preview_need_input">교체 거리를 입력하면 잔여를 미리 보여 줍니다</string>
+    <string name="baseline_preview_unavailable">미리 볼 수 없습니다</string>
+    <!-- S01 알아두기(소모품 역할·교체가 늦어지면). 일반 정보이며 정비 권고·진단이 아님 -->
+    <string name="tip_title">알아두기</string>
+    <string name="tip_role">역할 · %1$s</string>
+    <string name="tip_late">늦어지면 · %1$s</string>
+    <string name="tip_note">일반 정보 · 차량과 운행 조건마다 다를 수 있음</string>
+    <string name="tip_role_oil">엔진 안을 윤활하고 열을 식힙니다</string>
+    <string name="tip_late_oil">시간이 지나면 윤활·냉각 효과가 줄 수 있습니다</string>
+    <string name="tip_role_air_filter">엔진으로 들어가는 공기의 먼지를 거릅니다</string>
+    <string name="tip_late_air_filter">필터에 문제가 생기면 출력이 낮아질 수 있습니다</string>
+    <string name="tip_role_wiper">앞유리를 닦아 시야를 돕습니다</string>
+    <string name="tip_late_wiper">잘 닦이지 않으면 유리에 선이 남을 수 있습니다</string>
+    <string name="tip_role_filter">실내 유입 공기의 먼지·꽃가루를 거릅니다</string>
+    <string name="tip_late_filter">막히면 바람이 약해지고 냄새가 날 수 있습니다</string>
+    <string name="tip_role_tire">노면에 닿아 구동·제동·조향을 돕습니다</string>
+    <string name="tip_late_tire">닳으면 제동·조향 성능이 낮아질 수 있습니다</string>
+    <string name="tip_role_brake_pad">디스크와 마찰해 차량을 감속합니다</string>
+    <string name="tip_late_brake_pad">마모되면 제동 성능이 낮아질 수 있습니다</string>
+    <string name="tip_role_brake_disc">패드와 맞닿아 바퀴 회전을 줄입니다</string>
+    <string name="tip_late_brake_disc">손상되면 제동 때 떨림이 생길 수 있습니다</string>
+    <string name="tip_role_tire_rotation">타이어가 고르게 닳도록 위치를 바꿉니다</string>
+    <string name="tip_late_tire_rotation">위치를 그대로 두면 편마모가 생길 수 있습니다</string>
+    <string name="tip_role_alignment">바퀴 정렬을 맞춰 주행을 돕습니다</string>
+    <string name="tip_late_alignment">정렬이 어긋나면 편마모가 생길 수 있습니다</string>
+    <string name="tip_role_brake_fluid">브레이크 힘을 전달하는 액체입니다</string>
+    <string name="tip_late_brake_fluid">수분을 흡수하면 끓는점이 낮아질 수 있습니다</string>
+    <string name="tip_role_coolant">엔진의 열을 식히는 데 쓰입니다</string>
+    <string name="tip_late_coolant">양이나 혼합 비율이 맞지 않으면 과열될 수 있습니다</string>
+    <string name="tip_role_battery">시동과 차량 전기장치에 전기를 댑니다</string>
+    <string name="tip_late_battery">방전되면 시동이 걸리지 않을 수 있습니다</string>
+    <string name="tip_role_spark_plug">연료에 불꽃을 튀겨 연소시킵니다</string>
+    <string name="tip_late_spark_plug">시동 불량·떨림·연비 저하가 생길 수 있습니다</string>
+    <string name="tip_role_drive_belt">발전기 등을 돌리는 데 쓰입니다</string>
+    <string name="tip_late_drive_belt">장력이 낮으면 충전량이 줄 수 있습니다</string>
+    <string name="tip_role_transmission_oil">변속기 부품을 윤활하고 식힙니다</string>
+    <string name="tip_late_transmission_oil">변속 충격과 소음이 늘 수 있습니다</string>
+    <string name="tip_role_fuel_filter">연료 속 이물질을 걸러 줍니다</string>
+    <string name="tip_late_fuel_filter">막히면 출력·시동성이 낮아질 수 있습니다</string>
+    <string name="tip_role_reduction_oil">모터 힘을 바퀴로 전하는 기어를 윤활합니다</string>
+    <string name="tip_late_reduction_oil">기어 마모와 소음이 늘 수 있습니다</string>
+    <string name="tip_role_battery_coolant">구동 배터리 온도를 알맞게 유지합니다</string>
+    <string name="tip_late_battery_coolant">배터리 성능과 충전 속도가 떨어질 수 있습니다</string>
+
+    <!-- 아이디어 ③ 차량 신호(차량이 알려 주는 값, 내 기록과 별개). 해석·권고 문구 금지 -->
+    <string name="signal_title">차량이 알려 주는 신호</string>
+    <string name="signal_value">%1$s · %2$s</string>
+    <string name="signal_note">차량 센서 값입니다. 내 교체 기록과 별개입니다.</string>
+    <string name="signal_engine_oil">엔진오일 양</string>
+    <string name="signal_brake_fluid">브레이크액 양</string>
+    <string name="signal_transmission_oil">변속기 오일 양</string>
+    <string name="signal_level_normal">정상</string>
+    <string name="signal_level_low">부족</string>
+    <string name="signal_level_critically_low">매우 부족</string>
+    <string name="signal_level_high">많음</string>
+    <string name="signal_level_error">확인 불가</string>
+</resources>

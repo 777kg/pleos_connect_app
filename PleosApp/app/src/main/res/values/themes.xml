@@ -1,0 +1,139 @@
+<resources>
+    <!-- 흰 바탕 라이트 테마(Pleos 기본 앱 차량 설정 화면 기준, colors.xml). 높은 대비, 장식 애니메이션 없음(ch03). -->
+    <style name="Theme.PleosApp" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/background_primary</item>
+        <item name="android:colorBackground">@color/background_primary</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_tertiary</item>
+        <item name="colorAccent">@color/button_filled</item>
+        <item name="colorControlActivated">@color/button_filled</item>
+        <item name="colorControlNormal">@color/outline</item>
+        <item name="buttonStyle">@style/Widget.PleosApp.Button</item>
+        <item name="switchStyle">@style/Widget.PleosApp.Switch</item>
+        <item name="android:alertDialogTheme">@style/Theme.PleosApp.Dialog</item>
+        <item name="alertDialogTheme">@style/Theme.PleosApp.Dialog</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <!--
+        버튼 스타일은 모두 이 한 줄기에서 나옵니다(기본 앱 세그먼트 버튼 모양).
+        - Widget.PleosApp.Button        기본: 흰 면 + 회색 테두리, 선택(isSelected)이면 검정 채움
+        - Widget.PleosApp.Button.Filled 주요 동작: 검정 채움(화면마다 하나)
+        - .Back / .Row / .Row.Filled / .Tab / .Dialog / .Dialog.Filled  배치·선택 표시만 다른 변형
+    -->
+    <style name="Widget.PleosApp.Button" parent="Widget.AppCompat.Button">
+        <item name="android:minHeight">@dimen/touch_target_min</item>
+        <item name="android:minWidth">@dimen/touch_target_min</item>
+        <item name="android:textSize">@dimen/text_body</item>
+        <!-- "km" 같은 단위가 대문자로 바뀌지 않게 합니다. -->
+        <item name="android:textAllCaps">false</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="Widget.PleosApp.Button.Filled">
+        <item name="android:minHeight">@dimen/button_height_primary</item>
+        <item name="android:background">@drawable/button_filled_background</item>
+        <item name="android:textColor">@color/button_filled_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- 화면 왼쪽 위 뒤로·설정 버튼 -->
+    <style name="Widget.PleosApp.Button.Back">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginEnd">@dimen/gap</item>
+    </style>
+
+    <!-- 줄 안의 버튼: 같은 폭으로 나누고 테두리를 1dp 겹쳐 세그먼트처럼 붙입니다 -->
+    <style name="Widget.PleosApp.Button.Row">
+        <item name="android:layout_width">0dp</item>
+        <!-- 같은 줄의 주요 동작(Medium 80dp) 버튼과 높이를 맞춥니다(LinearLayout 균일 높이). -->
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginEnd">-1dp</item>
+    </style>
+
+    <style name="Widget.PleosApp.Button.Row.Filled">
+        <item name="android:minHeight">@dimen/button_height_primary</item>
+        <item name="android:background">@drawable/button_filled_background</item>
+        <item name="android:textColor">@color/button_filled_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- S02 항목 탭: 선택이면 검정 채움 + 아래쪽 흰 막대 + 굵은 글자(QA-017) -->
+    <style name="Widget.PleosApp.Button.Tab">
+        <item name="android:background">@drawable/tab_background</item>
+    </style>
+
+    <!-- 줄 안의 선택 버튼(S06 빠른 선택): 같은 폭 세그먼트 + 탭 선택 표시 -->
+    <style name="Widget.PleosApp.Button.Row.Tab">
+        <item name="android:background">@drawable/tab_background</item>
+    </style>
+
+    <!-- 확인 대화상자 버튼: 글자만 있는 작은 버튼 대신 앱 버튼과 같은 모양 -->
+    <style name="Widget.PleosApp.Button.Dialog">
+        <item name="android:layout_marginStart">@dimen/gap_small</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:minWidth">160dp</item>
+    </style>
+
+    <style name="Widget.PleosApp.Button.Dialog.Filled">
+        <item name="android:background">@drawable/button_filled_background</item>
+        <item name="android:textColor">@color/button_filled_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- S07 스위치: 흰 손잡이, 켜짐 검정·꺼짐 회색 트랙(기본 앱 토글) -->
+    <style name="Widget.PleosApp.Switch" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="android:thumb">@drawable/switch_thumb_shape</item>
+        <item name="track">@drawable/switch_track_shape</item>
+        <item name="switchMinWidth">72dp</item>
+        <item name="thumbTint">@color/switch_thumb</item>
+        <item name="trackTint">@color/switch_track</item>
+        <item name="trackTintMode">src_in</item>
+    </style>
+
+    <!-- 확인 대화상자(S02 삭제, S03 저장 확인): 흰 면 + 테두리 -->
+    <style name="Theme.PleosApp.Dialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/dialog_background</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="colorAccent">@color/button_filled</item>
+        <item name="android:textAppearanceMedium">@style/TextAppearance.PleosApp.DialogMessage</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.PleosApp.Button.Dialog</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.PleosApp.Button.Dialog.Filled</item>
+    </style>
+
+    <!-- 대화상자 본문(Body Small) -->
+    <style name="TextAppearance.PleosApp.DialogMessage" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textSize">@dimen/text_body</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- 숫자 입력 칸(S06 기준 거리) -->
+    <style name="NumberInput">
+        <item name="android:layout_width">@dimen/input_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/touch_target_min</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:background">@drawable/input_background</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorHint">@color/text_tertiary</item>
+        <item name="android:textSize">@dimen/text_subtitle</item>
+        <item name="android:inputType">number</item>
+        <item name="android:imeOptions">actionDone|flagNoExtractUi|flagNoFullscreen</item>
+        <item name="android:maxLength">6</item>
+        <item name="android:singleLine">true</item>
+    </style>
+</resources>

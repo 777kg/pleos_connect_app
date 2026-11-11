@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S07 소모품 설정: 홈에 보일 소모품을 켜고 끕니다(공통·내연기관·전기차 묶음). 행은 view_setting_row. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <Button android:id="@+id/settingsBackButton" style="@style/Widget.PleosApp.Button.Back" android:text="@string/back" />
+        <TextView style="@style/ScreenTitle" android:layout_width="0dp" android:layout_weight="1" android:text="@string/settings_title" />
+    </LinearLayout>
+
+    <TextView style="@style/CheckCardLabel" android:text="@string/settings_hint" />
+    <TextView android:id="@+id/vehicleKindText" style="@style/CheckCardLabel" />
+
+    <!-- 동력 방식 직접 선택(자동 판정이 안 되거나 틀릴 때). 선택된 버튼은 채움 표시 -->
+    <LinearLayout style="@style/ButtonRow">
+        <Button android:id="@+id/kindAuto" style="@style/Widget.PleosApp.Button.Row" android:text="@string/vehicle_kind_auto" />
+        <Button android:id="@+id/kindEv" style="@style/Widget.PleosApp.Button.Row" android:text="@string/vehicle_kind_ev" />
+        <Button android:id="@+id/kindIce" style="@style/Widget.PleosApp.Button.Row" android:text="@string/vehicle_kind_ice" />
+        <Button android:id="@+id/kindHybrid" style="@style/Widget.PleosApp.Button.Row" android:text="@string/vehicle_kind_hybrid" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/gap_small"
+        android:layout_weight="1">
+        <LinearLayout
+            android:id="@+id/settingsList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+</LinearLayout>

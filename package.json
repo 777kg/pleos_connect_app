@@ -1,0 +1,11 @@
+{
+  "name": "pleos-connect-tools",
+  "private": true,
+  "description": "Pleos Connect 앱 보조 스크립트(Codex 서브 에이전트 실행)",
+  "scripts": {
+    "qa:codex": "node scripts/codex/qa.mjs",
+    "plan:codex": "node scripts/codex/plan.mjs",
+    "idea:codex": "node scripts/codex/idea.mjs",
+    "image:codex": "node scripts/codex/image.mjs"
+  }
+}

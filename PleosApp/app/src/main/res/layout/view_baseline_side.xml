@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S06 보조 칸(S06-09~11): 빠른 선택 프리셋 → 내 평균 교체 간격 참고 → 잔여 미리보기.
+     가로는 오른쪽 칸, 세로는 취소·저장 아래에 같은 내용을 둡니다. 모두 사용자 선택지·내 기록이며 정비 권고가 아닙니다. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- S06-09 빠른 선택 -->
+    <TextView style="@style/CheckCardTitle" android:text="@string/baseline_presets_title" />
+    <TextView style="@style/CheckCardLabel" android:layout_marginTop="4dp" android:text="@string/not_recommendation" />
+    <LinearLayout style="@style/ButtonRow">
+        <Button android:id="@+id/preset5000" style="@style/Widget.PleosApp.Button.Row.Tab" />
+        <Button android:id="@+id/preset10000" style="@style/Widget.PleosApp.Button.Row.Tab" />
+        <Button android:id="@+id/preset15000" style="@style/Widget.PleosApp.Button.Row.Tab" />
+        <Button android:id="@+id/preset20000" style="@style/Widget.PleosApp.Button.Row.Tab" />
+    </LinearLayout>
+
+    <!-- S06-10 내 평균 교체 간격 참고(기록 2건 이상이고 평균이 있을 때만) -->
+    <LinearLayout
+        android:id="@+id/myAverageCard"
+        style="@style/CheckCard"
+        android:focusable="true">
+        <TextView style="@style/CheckCardTitle" android:text="@string/baseline_my_average_title" />
+        <TextView android:id="@+id/myAverageText" style="@style/CheckCardValue" />
+        <TextView style="@style/CheckCardLabel" android:text="@string/stats_note" />
+        <Button
+            android:id="@+id/useAverageButton"
+            style="@style/Widget.PleosApp.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap_small"
+            android:text="@string/baseline_use_average" />
+    </LinearLayout>
+
+    <!-- S06-11 잔여 미리보기: 입력 중인 값으로 S01과 같은 판정 -->
+    <LinearLayout
+        android:id="@+id/previewCard"
+        style="@style/CheckCard"
+        android:focusable="true">
+        <TextView style="@style/CheckCardTitle" android:text="@string/baseline_preview_title" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap_small"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/previewImage"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/image_frame"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/previewPrimaryText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_subtitle"
+                    android:textStyle="bold" />
+                <TextView android:id="@+id/previewSecondaryText" style="@style/CheckCardSecondary" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

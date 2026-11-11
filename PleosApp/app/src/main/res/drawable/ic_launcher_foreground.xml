@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 앱 아이콘 전경(T3: 타이어와 잔여 호). 108dp 캔버스, 그림은 가운데 66dp 안전 영역 안. 마켓용 512px 원본: docs/assets/store/app_icon.svg(같은 그림을 80×80 영역으로 확대) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#1C1C1E" android:pathData="M23,54 a31,31 0 1,0 62,0 a31,31 0 1,0 -62,0 Z" />
+    <path android:strokeColor="#3A3A3E" android:strokeWidth="2" android:pathData="M30,54 a24,24 0 1,0 48,0 a24,24 0 1,0 -48,0 Z" />
+    <path android:strokeColor="#1E9E5A" android:strokeWidth="5" android:strokeLineCap="round" android:pathData="M54,30 A24,24 0 1,1 31.2,61.4" />
+    <path android:fillColor="#D9D9DE" android:pathData="M40,54 a14,14 0 1,0 28,0 a14,14 0 1,0 -28,0 Z" />
+    <path android:strokeColor="#1C1C1E" android:strokeWidth="3" android:strokeLineCap="round"
+        android:pathData="M54,54 L54,42 M54,54 L65.4,50.3 M54,54 L61,63.7 M54,54 L47,63.7 M54,54 L42.6,50.3" />
+    <path android:fillColor="#1C1C1E" android:pathData="M50,54 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 Z" />
+</vector>

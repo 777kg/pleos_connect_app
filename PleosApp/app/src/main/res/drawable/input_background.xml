@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 숫자 입력 칸: 흰 면 + 회색 테두리, 포커스일 때 굵은 검정 테두리로 입력 위치를 알립니다. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/button_basic" />
+            <stroke android:width="2dp" android:color="@color/button_filled" />
+            <corners android:radius="@dimen/corner_radius" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/button_basic" />
+            <stroke android:width="@dimen/button_stroke" android:color="@color/outline" />
+            <corners android:radius="@dimen/corner_radius" />
+        </shape>
+    </item>
+</selector>

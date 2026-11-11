@@ -1,0 +1,19 @@
+# Codex 실행 보고서(매 실행마다 덮어씀)
+.codex-out/
+
+# Node
+node_modules/
+
+# 비밀값·서명 키
+*.jks
+*.keystore
+local.properties
+.env
+
+# OS·IDE
+.DS_Store
+Thumbs.db
+.idea/
+
+# 공모전 접수양식(기획서) — 양식이 주최 측 정보자산이고 개인정보·서명이 들어가므로 저장소에 올리지 않음
+docs/contest/*.docx

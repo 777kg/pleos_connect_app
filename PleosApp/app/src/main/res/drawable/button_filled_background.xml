@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 주요 동작 버튼: 검정 채움(기본 앱의 선택된 세그먼트와 같은 모양). 교체 기록·기록 저장·변경 저장·기준 거리 저장·삭제 확정. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/button_filled_disabled" />
+            <stroke android:width="@dimen/button_stroke" android:color="@color/button_filled_disabled" />
+            <corners android:radius="@dimen/corner_radius" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/button_filled_pressed" />
+            <stroke android:width="@dimen/button_stroke" android:color="@color/button_filled_pressed" />
+            <corners android:radius="@dimen/corner_radius" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/button_filled" />
+            <stroke android:width="@dimen/button_stroke" android:color="@color/button_filled" />
+            <corners android:radius="@dimen/corner_radius" />
+        </shape>
+    </item>
+</selector>

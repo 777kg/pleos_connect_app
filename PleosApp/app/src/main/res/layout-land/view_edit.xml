@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S03 기록 수정(가로 2칸): 왼쪽 거리·시각 조작, 오른쪽 전후 비교·출처·취소/저장. 세로와 같은 ID·같은 기능(UI_SPEC S03). -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- S03-01 뒤로 → S02 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <Button android:id="@+id/editBackButton" style="@style/Widget.PleosApp.Button.Back" android:text="@string/back" />
+            <TextView android:id="@+id/editTitle" style="@style/ScreenTitle" android:layout_width="0dp" android:layout_weight="1" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/notFoundText"
+            style="@style/CheckCardValue"
+            android:text="@string/record_not_found" />
+
+        <LinearLayout
+            android:id="@+id/editContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                    <!-- S03-02 거리 -->
+                    <TextView android:id="@+id/distanceText" style="@style/CheckCardValue" android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <Button android:id="@+id/kmMinus" style="@style/Widget.PleosApp.Button.Row" android:text="@string/minus_100" />
+                        <Button android:id="@+id/kmPlus" style="@style/Widget.PleosApp.Button.Row" android:text="@string/plus_100" />
+                    </LinearLayout>
+
+                    <!-- S03-03 교체 시각 -->
+                    <TextView android:id="@+id/timeText" style="@style/CheckCardValue" android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <Button android:id="@+id/dayMinus" style="@style/Widget.PleosApp.Button.Row" android:text="@string/minus_day" />
+                        <Button android:id="@+id/dayPlus" style="@style/Widget.PleosApp.Button.Row" android:text="@string/plus_day" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <Button android:id="@+id/hourMinus" style="@style/Widget.PleosApp.Button.Row" android:text="@string/minus_hour" />
+                        <Button android:id="@+id/hourPlus" style="@style/Widget.PleosApp.Button.Row" android:text="@string/plus_hour" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <Button android:id="@+id/minMinus" style="@style/Widget.PleosApp.Button.Row" android:text="@string/minus_10min" />
+                        <Button android:id="@+id/minPlus" style="@style/Widget.PleosApp.Button.Row" android:text="@string/plus_10min" />
+                    </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                    <!-- S03-04 전후 비교·출처 -->
+                    <LinearLayout style="@style/CheckCard">
+                        <TextView android:id="@+id/beforeAfterText" style="@style/CheckCardValue" android:layout_marginTop="0dp" />
+                        <TextView android:id="@+id/editSourceText" style="@style/CheckCardValue" android:text="@string/edited_source" />
+                        <TextView style="@style/CheckCardValue" android:text="@string/latest_may_change" />
+                    </LinearLayout>
+                <!-- S03-05·06: 오른쪽 전후 비교 아래(가로) -->
+                <LinearLayout style="@style/ButtonRow" android:layout_marginTop="@dimen/gap">
+                    <Button android:id="@+id/editCancelButton" style="@style/Widget.PleosApp.Button.Row" android:text="@string/cancel" />
+                    <Button android:id="@+id/saveEditButton" style="@style/Widget.PleosApp.Button.Row.Filled" android:text="@string/save_changes" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

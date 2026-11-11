@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S01 소모품 상세(값 수신·기록 상태). portrait는 전체 화면, landscape는 S05 오른쪽 패널. 주석의 ID는 UI_SPEC S01-xx.
+     배치: 사진 옆 핵심 수치 → 거리 카드 → 버튼 2×2. 크기는 Pleos Typography(Title/Headline/Body)를 따릅니다. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- S01-01 뒤로(1칸에서만) → S05 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <Button android:id="@+id/detailBackButton" style="@style/Widget.PleosApp.Button.Back" android:text="@string/back" />
+            <TextView android:id="@+id/itemName" style="@style/ScreenTitle" android:layout_width="0dp" android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- S01-02 -->
+            <ImageView
+                android:id="@+id/itemImage"
+                android:layout_width="@dimen/detail_image_size"
+                android:layout_height="@dimen/detail_image_size"
+                android:background="@drawable/image_frame"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <!-- S01-03 핵심 수치/상태 -->
+                <TextView
+                    android:id="@+id/primaryText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_key"
+                    android:textStyle="bold" />
+
+                <TextView android:id="@+id/secondaryText" style="@style/CheckCardSecondary" />
+
+                <!-- S01-04 기준 거리 -->
+                <TextView android:id="@+id/baselineText" style="@style/CheckCardLabel" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- S01-06 현재/마지막 거리·출처 -->
+        <LinearLayout style="@style/CheckCard">
+            <TextView android:id="@+id/currentKmText" style="@style/CheckCardValue" android:layout_marginTop="0dp" />
+            <TextView android:id="@+id/checkedAtText" style="@style/CheckCardLabel" />
+            <TextView android:id="@+id/lastReplacementText" style="@style/CheckCardValue" />
+            <TextView
+                android:id="@+id/editedSourceText"
+                style="@style/CheckCardLabel"
+                android:text="@string/edited_source" />
+        </LinearLayout>
+
+        <!-- 아이디어 ③ 차량 신호: 차량이 직접 알려 주는 액량 상태. 내 기록과 별개임을 출처로 밝힘. 미지원이면 숨김 -->
+        <LinearLayout
+            android:id="@+id/signalCard"
+            style="@style/CheckCard"
+            android:focusable="true">
+            <TextView style="@style/CheckCardLabel" android:layout_marginTop="0dp" android:text="@string/signal_title" android:textStyle="bold" />
+            <TextView android:id="@+id/signalValueText" style="@style/CheckCardValue" />
+            <TextView android:id="@+id/signalCheckedText" style="@style/CheckCardLabel" />
+            <TextView style="@style/CheckCardLabel" android:text="@string/signal_note" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/blockedText"
+            style="@style/CheckCardLabel"
+            android:text="@string/comparison_blocked" />
+
+        <!-- 거리 비교 불가일 때만: 주행거리 초기화·계기판 교체 뒤 새 기준으로 다시 시작 -->
+        <LinearLayout android:id="@+id/rebaselineRow" style="@style/ButtonRow">
+            <Button android:id="@+id/rebaselineButton" style="@style/Widget.PleosApp.Button.Row" android:text="@string/rebaseline" />
+        </LinearLayout>
+
+        <!-- S01-07·08 -->
+        <LinearLayout style="@style/ButtonRow">
+            <Button android:id="@+id/addRecordButton" style="@style/Widget.PleosApp.Button.Row.Filled" android:text="@string/add_record" />
+            <Button android:id="@+id/historyButton" style="@style/Widget.PleosApp.Button.Row" android:text="@string/history" />
+        </LinearLayout>
+
+        <!-- S01-05·09 -->
+        <LinearLayout style="@style/ButtonRow">
+            <Button android:id="@+id/editBaselineButton" style="@style/Widget.PleosApp.Button.Row" android:text="@string/edit_baseline" />
+            <Button android:id="@+id/refreshButton" style="@style/Widget.PleosApp.Button.Row" android:text="@string/refresh" />
+        </LinearLayout>
+
+        <!-- S01-11 알아두기: 소모품 역할·교체가 늦어지면(일반 정보, 권고 아님). 두 줄로 짧게 -->
+        <LinearLayout
+            android:id="@+id/tipCard"
+            style="@style/CheckCard"
+            android:focusable="true">
+            <TextView style="@style/CheckCardLabel" android:layout_marginTop="0dp" android:text="@string/tip_title" android:textStyle="bold" />
+            <TextView android:id="@+id/tipRoleText" style="@style/CheckCardSecondary" android:layout_marginTop="4dp" />
+            <TextView android:id="@+id/tipLateText" style="@style/CheckCardSecondary" android:layout_marginTop="4dp" />
+            <TextView style="@style/CheckCardLabel" android:layout_marginTop="4dp" android:text="@string/tip_note" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

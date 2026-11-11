@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 기본 버튼 글자: 검정, 비활성은 연회색, 선택(이력 탭)은 검정 채움 위 흰 글자. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/text_disabled" android:state_enabled="false" />
+    <item android:color="@color/text_on_filled" android:state_selected="true" />
+    <item android:color="@color/text_primary" />
+</selector>

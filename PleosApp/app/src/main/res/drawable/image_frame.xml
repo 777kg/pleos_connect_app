@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 소모품 사진 틀: 연한 회색 면(사진 주변 여백이 흰 바탕과 구분되게), 각진 모서리. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@color/background_secondary" />
+</shape>

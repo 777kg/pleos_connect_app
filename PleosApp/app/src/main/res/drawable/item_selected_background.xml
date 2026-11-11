@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S05 소모품 타일: 흰 면 + 회색 테두리. 선택(2칸)은 굵은 검정 테두리로 표시해 색만으로 구분하지 않습니다. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/button_basic" />
+            <stroke android:width="@dimen/button_stroke_selected" android:color="@color/button_filled" />
+            <corners android:radius="@dimen/corner_radius" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/surface_pressed" />
+            <stroke android:width="@dimen/button_stroke" android:color="@color/outline" />
+            <corners android:radius="@dimen/corner_radius" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/button_basic" />
+            <stroke android:width="@dimen/button_stroke" android:color="@color/divider" />
+            <corners android:radius="@dimen/corner_radius" />
+        </shape>
+    </item>
+</selector>

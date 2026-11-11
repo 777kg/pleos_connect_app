@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S07 스위치 트랙: 기본 앱 토글 크기의 알약 모양. 색은 color/switch_track(켜짐 검정·꺼짐 회색)로 칠합니다. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="#FFFFFFFF" />
+    <corners android:radius="20dp" />
+    <size android:width="72dp" android:height="40dp" />
+</shape>

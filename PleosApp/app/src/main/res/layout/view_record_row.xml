@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S02-03 기록 한 줄: 항목·거리·시각, 마지막 기록 배지, 출처 표기, 수정·삭제. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CheckCard"
+    android:layout_marginTop="8dp">
+
+    <TextView
+        android:id="@+id/rowText"
+        style="@style/CheckCardValue"
+        android:layout_marginTop="0dp"
+        android:textStyle="bold" />
+
+    <TextView android:id="@+id/latestBadge" style="@style/CheckCardSecondary" android:text="@string/latest_badge" />
+    <TextView android:id="@+id/blockedBadge" style="@style/CheckCardSecondary" android:text="@string/blocked_kept" />
+    <TextView android:id="@+id/editedBadge" style="@style/CheckCardSecondary" android:text="@string/edited_source" />
+    <TextView android:id="@+id/rebasedBadge" style="@style/CheckCardSecondary" android:text="@string/rebased_badge" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button android:id="@+id/editButton" style="@style/Widget.PleosApp.Button.Row" android:text="@string/edit" />
+        <Button android:id="@+id/deleteButton" style="@style/Widget.PleosApp.Button.Row" android:text="@string/delete" />
+    </LinearLayout>
+</LinearLayout>

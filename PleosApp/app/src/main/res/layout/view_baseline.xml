@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S06 기준 거리 설정·수정: 숫자를 직접 입력(100~100,000 km) → 저장/취소.
+     정차 중 전용 화면이라 키보드 입력을 씁니다. 주행 규제가 오면 화면 전체가 가려지고 키보드도 닫힙니다. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <Button android:id="@+id/baselineBackButton" style="@style/Widget.PleosApp.Button.Back" android:text="@string/back" />
+            <TextView android:id="@+id/baselineTitle" style="@style/ScreenTitle" android:layout_width="0dp" android:layout_weight="1" />
+        </LinearLayout>
+
+        <TextView android:id="@+id/currentBaselineText" style="@style/CheckCardValue" android:layout_marginTop="@dimen/gap" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/baselineInput"
+                style="@style/NumberInput"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:maxWidth="@dimen/input_width"
+                android:autofillHints=""
+                android:hint="@string/baseline_input_hint" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_small"
+                android:text="@string/km_unit"
+                android:textSize="@dimen/text_subtitle" />
+        </LinearLayout>
+
+        <TextView android:id="@+id/baselineErrorText" style="@style/CheckCardLabel" android:text="@string/range_hint" />
+
+        <LinearLayout style="@style/ButtonRow" android:layout_marginTop="@dimen/gap">
+            <Button android:id="@+id/baselineCancelButton" style="@style/Widget.PleosApp.Button.Row" android:text="@string/cancel" />
+            <Button android:id="@+id/saveBaselineButton" style="@style/Widget.PleosApp.Button.Row.Filled" android:text="@string/save_baseline" />
+        </LinearLayout>
+
+        <!-- S06-09~11 빠른 선택·내 평균·미리보기(가로에서는 오른쪽 칸) -->
+        <include
+            android:id="@+id/baselineSide"
+            layout="@layout/view_baseline_side"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap" />
+    </LinearLayout>
+</ScrollView>

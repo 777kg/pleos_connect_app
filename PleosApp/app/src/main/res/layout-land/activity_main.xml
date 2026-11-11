@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- landscape(2칸): 왼쪽 S05 탑뷰, 오른쪽 S01 패널(미선택 시 안내). S04·S06은 전체를 덮습니다.
+     portrait와 같은 ID·같은 기능입니다(기능 패리티). -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:padding="@dimen/screen_padding">
+
+    <LinearLayout
+        android:id="@+id/panes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <include
+            android:id="@+id/home"
+            layout="@layout/view_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/gap"
+            android:layout_weight="1">
+
+            <include android:id="@+id/detail" layout="@layout/view_detail" />
+
+            <TextView
+                android:id="@+id/selectHint"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/select_item"
+                android:textSize="@dimen/text_title" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <include android:id="@+id/settings" layout="@layout/view_settings" />
+    <include android:id="@+id/history" layout="@layout/view_history" />
+    <include android:id="@+id/edit" layout="@layout/view_edit" />
+    <include android:id="@+id/confirm" layout="@layout/view_confirm" />
+    <include android:id="@+id/baseline" layout="@layout/view_baseline" />
+
+    <TextView
+        android:id="@+id/restrictedMessage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/restricted_message"
+        android:textSize="@dimen/text_title"
+        android:visibility="gone" />
+</FrameLayout>

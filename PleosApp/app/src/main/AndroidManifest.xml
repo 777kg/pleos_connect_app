@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- AAOS 표준 선언 -->
+    <uses-feature
+        android:name="android.hardware.type.automotive"
+        android:required="true" />
+
+    <!--
+        조회 퍼미션만 선언합니다(ch02). 제어(CONTROL_CAR_*)는 쓰지 않습니다.
+        - CAR_DRIVE: Odometer checkCurrentDistanceDrivenCapabilities·getCurrentDistanceDriven
+          (SDK 2.3.2 인터페이스 @RequiresPermission과 구현 @RequiresCustomPermission 모두 CAR_DRIVE, protection level normal)
+        App Market 승인 여부는 심사 전에 확인해야 합니다 [확인 필요].
+    -->
+    <uses-permission android:name="pleos.car.permission.CAR_DRIVE" />
+    <!-- CAR_SAFETY: Safety 엔진오일·브레이크액·변속기 오일 양(아이디어 ③, 조회만). 미승인·미지원이면 해당 카드만 숨깁니다 [승인 확인 필요] -->
+    <uses-permission android:name="pleos.car.permission.CAR_SAFETY" />
+    <!-- 동력 방식(AAOS 표준 INFO_FUEL_TYPE): 설정 화면의 '해당 없음' 안내에만 사용. VIN 등 식별 정보는 읽지 않음 -->
+    <uses-permission android:name="android.car.permission.CAR_INFO" />
+
+    <application
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PleosApp">
+
+        <!-- CCP 미지원: 필수 조작은 터치만으로 끝나야 합니다(ch04). CCP를 지원하게 되면 제거합니다. -->
+        <meta-data
+            android:name="com.hmg.rotary.ROTARY_SUPPORTED"
+            android:value="false" />
+
+        <!-- screenOrientation 미지정: portrait 1칸으로 뜨며, 크기 변경 시 layout-land도 쓰입니다. -->
+        <!-- singleTask: Gleo가 다시 열어도 화면을 하나만 두고 onNewIntent로 받습니다(아이디어 ⑦). -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Gleo Interface: assets/schema.json의 component=activity 기능 -->
+            <intent-filter>
+                <action android:name="OPEN_CONSUMABLE_RECORD" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!--
+                Distraction Optimization(DO)은 선언하지 않았습니다 → 정차 중에만 사용 가능.
+                카테고리는 Mobility Services지만 정차 전용으로 둡니다(DECISIONS 2026-11-10). 주행 중 기능을 열 때만 아래를 검토합니다.
+                AAOS 표준 형식이며 Pleos 문서에는 형식이 없습니다 [확인 필요].
+                <meta-data android:name="distractionOptimized" android:value="true" />
+            -->
+        </activity>
+
+        <!-- Gleo Interface: component=service 기능(sendBroadcast). 주행 중에는 기록 내용을 답하지 않습니다.
+             Gleo Action을 보내는 패키지·퍼미션이 문서에 없어 exported로 둡니다 [확인 필요, QA-023].
+             응답(Callback)은 Gleo 음성비서(ai.umos.ambientai)로만 보냅니다(GleoActions.GLEO_AGENT_PACKAGE). -->
+        <receiver
+            android:name=".GleoActionReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="GET_CONSUMABLE_STATUS" />
+                <action android:name="LIST_CONSUMABLES_BY_REMAINING" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>
