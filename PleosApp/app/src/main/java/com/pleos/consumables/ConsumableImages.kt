@@ -28,7 +28,7 @@ object ConsumableImages {
     fun thumbnail(context: Context, item: Consumable): Int = step(context, item, 100)
 
     private fun step(context: Context, item: Consumable, percent: Int): Int {
-        val name = "%s_%03d".format(item.key, percent)
+        val name = "%s_%03d".format(item.imageKey, percent)
         val id = context.resources.getIdentifier(name, "drawable", context.packageName)
         return if (id != 0) id else R.drawable.consumable_unknown
     }

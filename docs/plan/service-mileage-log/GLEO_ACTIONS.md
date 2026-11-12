@@ -30,8 +30,10 @@ Gleo(차량 음성비서)가 사용자의 말을 해석해 앱 기능을 부릅�
 | engine_air_filter | 엔진 에어필터 | coolant | 냉각수 |
 | wiper_blade | 와이퍼 | 12v_battery | 12V 배터리 |
 | cabin_air_filter | 에어컨 필터 | spark_plug | 점화 플러그 |
-| tire | 타이어 | drive_belt | 구동 벨트 |
-| brake_pad | 브레이크 패드 | transmission_oil | 변속기 오일 |
+| front_left_tire | 앞 왼쪽 타이어 | drive_belt | 구동 벨트 |
+| front_right_tire | 앞 오른쪽 타이어 | transmission_oil | 변속기 오일 |
+| rear_left_tire | 뒤 왼쪽 타이어 | brake_pad | 브레이크 패드 |
+| rear_right_tire | 뒤 오른쪽 타이어 | | |
 | brake_disc | 브레이크 디스크 | fuel_filter | 연료 필터 |
 | tire_rotation | 타이어 위치 교환 | reduction_gear_oil | 감속기 오일 |
 | wheel_alignment | 휠 얼라인먼트 | battery_coolant | 배터리 냉각수 |
@@ -54,6 +56,7 @@ Gleo(차량 음성비서)가 사용자의 말을 해석해 앱 기능을 부릅�
 | 이 차량 동력 방식에 맞지 않음 | fail | "엔진오일 does not apply to this vehicle's powertrain." |
 | 누적 주행거리 못 읽음 | fail | "The vehicle odometer could not be read." |
 | `item` 누락·알 수 없음 | asking | "Which consumable item should be checked?" |
+| 위치 없이 `tire`·'타이어'만 옴 | asking | "Which tire should be checked: front left, front right, rear left, or rear right?" |
 | 주행 규제 중 | fail | "Consumable records can be checked only while the vehicle is parked." |
 
 `data`: `item`, `drivenSinceReplacementKm`, `yourDistanceKm`, `leftPercent` 중 해당 값.
@@ -93,7 +96,7 @@ Callback은 action `ai.pleos.playground.intent.action.APP_ACTION_RESPONSE`, extr
 - 단위 테스트: `GleoActionsTest` 7개 통과.
 - 에뮬레이터(2026-11-10, adb로 Gleo 호출 흉내): 정차 중 GET(기록 있음·없음·item 누락), LIST, OPEN(일반 JSON·따옴표 감싼 JSON) 모두 의도대로 응답·이동.
   ```bash
-  adb shell "am broadcast -a GET_CONSUMABLE_STATUS -p com.pleos.consumables --es ACTION_PARAM '{\"item\":\"tire\"}'"
+  adb shell "am broadcast -a GET_CONSUMABLE_STATUS -p com.pleos.consumables --es ACTION_PARAM '{\"item\":\"front_left_tire\"}'"
   ```
   ```bash
   adb shell "am start -a OPEN_CONSUMABLE_RECORD -p com.pleos.consumables --es ACTION_PARAM '{\"item\":\"brake_fluid\"}'"

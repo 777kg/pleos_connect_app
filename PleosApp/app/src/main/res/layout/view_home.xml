@@ -62,7 +62,7 @@
                 android:id="@+id/leftColumn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="top|center_horizontal"
                 android:orientation="vertical" />
         </ScrollView>
 
@@ -90,7 +90,7 @@
                 android:id="@+id/rightColumn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="top|center_horizontal"
                 android:orientation="vertical" />
         </ScrollView>
     </LinearLayout>

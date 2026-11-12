@@ -85,8 +85,12 @@ class RecordStore(context: Context) {
         prefs.edit().apply { if (kind == null) remove(KEY_KIND_OVERRIDE) else putString(KEY_KIND_OVERRIDE, kind.name) }.apply()
     }
 
-    fun enabledItems(): Set<Consumable> =
-        prefs.getStringSet(KEY_ENABLED, null)?.mapNotNull(Consumable::fromKey)?.toSet() ?: Consumable.DEFAULT_ENABLED
+    fun enabledItems(): Set<Consumable> {
+        val keys = prefs.getStringSet(KEY_ENABLED, null) ?: return Consumable.DEFAULT_ENABLED
+        val items = keys.mapNotNull(Consumable::fromKey).toSet()
+        // 위치별 타이어로 나누기 전에 '타이어'를 켜 두었으면 4개 모두 켭니다.
+        return if (Consumable.LEGACY_TIRE_KEY in keys) items + Consumable.TIRES else items
+    }
 
     fun setEnabledItems(items: Set<Consumable>) {
         prefs.edit().putStringSet(KEY_ENABLED, items.map { it.key }.toSet()).apply()

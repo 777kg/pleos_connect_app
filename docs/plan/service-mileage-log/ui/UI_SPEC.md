@@ -27,7 +27,7 @@
 
 | 데이터 | 필드 제안 | 규칙 |
 |---|---|---|
-| 교체 기록 | 기록 ID, 항목 키(18종 중 하나), 교체 시각, 차량 수신 원본 거리(km), 수신 시각, 표시/계산용 기록 거리(km), 수정 여부·시각·저장 순서 | 수정 후 `사용자 수정 · 차량 계측값 아님` 표시. 원본 보존 정책 확인 필요. |
+| 교체 기록 | 기록 ID, 항목 키(21종 중 하나), 교체 시각, 차량 수신 원본 거리(km), 수신 시각, 표시/계산용 기록 거리(km), 수정 여부·시각·저장 순서 | 수정 후 `사용자 수정 · 차량 계측값 아님` 표시. 원본 보존 정책 확인 필요. |
 | 기준 거리 | 항목 키, 사용자 설정 거리(km), 설정/수정 시각 | 항목마다 선택. 기본값 없음. S02 전체 삭제 때 숨긴 항목 포함 모두 삭제. |
 | 누적 기준 | 차량/계측 기준을 구분할 검증 정보 | 공식 식별 수단 확인 필요. 값 감소 시 자동 연결 금지. 유효한 현재 값 ≥ 기록 값이면 계산 표시. |
 | 로컬 저장 | 단일 기기 저장, 서버·계정·백그라운드 전송 없음 | 사용자·차량별 분리, 백업 제외, 실제 저장소 범위 확인 필요. 화면 공유 안내 문구는 두지 않는다(2026-11-09). |
@@ -35,7 +35,7 @@
 
 ### 카탈로그·동력 방식·켜짐
 
-- 카탈로그 18종의 키·이름·묶음은 PLAN.md §3 표를 단일 기준으로 쓴다. 최초 켜짐은 `oil`, `air_filter`, `wiper`, `filter`, `tire`, `brake_pad`. S07에서 변경한 켜짐 값은 로컬에 저장하며 끈 항목의 기록·기준 거리를 지우지 않는다.
+- 카탈로그 21종의 키·이름·묶음은 PLAN.md §3 표를 단일 기준으로 쓴다(타이어는 위치별 4개, 2026-11-12). 최초 켜짐은 `oil`, `air_filter`, `wiper`, `filter`, `tire_fl`, `tire_fr`, `tire_rl`, `tire_rr`, `brake_pad`. S07에서 변경한 켜짐 값은 로컬에 저장하며 끈 항목의 기록·기준 거리를 지우지 않는다.
 - S07 동력 선택의 기본값은 `자동`이다. 자동일 때 AAOS `INFO_FUEL_TYPE`(`android.car.permission.CAR_INFO`) 판정값을 쓴다. `ELECTRIC=10`만 있으면 전기차, 10과 다른 값이 있으면 하이브리드, 그 외 값이 있으면 내연기관, 실패·빈 값이면 확인할 수 없음. 에뮬레이터 v2.1.0의 `[10]`은 전기차로 실측. 사용자가 S07에서 전기차·내연기관·하이브리드를 직접 선택하면 그 값을 동력 필터에 적용한다. VIN은 읽지 않는다.
 - 전기차는 내연기관 전용, 내연기관은 전기차 전용을 S05·S02 탭·S07에서 숨긴다. 하이브리드·모름은 모두 보인다. S07의 빈 묶음 제목도 숨긴다. 숨김은 저장값·기록에 영향을 주지 않는다. S02 탭은 켜짐 여부와 무관하게 동력 필터를 통과한 항목을 가로 스크롤로 보여 준다.
 
@@ -98,7 +98,7 @@
 
 | 키 | 문구 |
 |---|---|
-| `item_name` | PLAN.md §3의 18종 카탈로그에서 선택한 항목명 |
+| `item_name` | PLAN.md §3의 21종 카탈로그에서 선택한 항목명 |
 | `remaining_percent` | 잔여 {percent}% |
 | `elapsed_km` | 교체 후 {km} km |
 | `last_replacement` | 마지막 교체 {km} km · {time} |
@@ -279,7 +279,7 @@
 |---|---|
 | 앞 | `oil`, `air_filter`, `wiper`, `brake_fluid`, `coolant`, `battery`, `spark_plug`, `drive_belt` |
 | 실내 | `filter` |
-| 바퀴 | `tire`, `brake_pad`, `brake_disc`, `tire_rotation`, `alignment` |
+| 바퀴 | `tire_fl`(왼쪽 열), `tire_fr`(오른쪽 열), `tire_rl`(왼쪽 열), `tire_rr`(오른쪽 열), `brake_pad`, `brake_disc`, `tire_rotation`, `alignment` |
 | 하부 | `transmission_oil`, `fuel_filter`, `reduction_oil`, `battery_coolant` |
 | 뒤 | 없음 |
 
@@ -467,7 +467,7 @@
 |---|---|---|---|---|
 | 공통 | `wiper` · 와이퍼 | `docs/assets/consumables/wiper.webp` | `res/drawable-nodpi/wiper_NNN.webp` | 11장 |
 | 공통 | `filter` · 에어컨 필터 | `docs/assets/consumables/filter.webp` | `res/drawable-nodpi/filter_NNN.webp` | 11장 |
-| 공통 | `tire` · 타이어 | `docs/assets/consumables/tire.webp` | `res/drawable-nodpi/tire_NNN.webp` | 11장 |
+| 공통 | `tire_fl`·`tire_fr`·`tire_rl`·`tire_rr` · 위치별 타이어(사진 공유) | `docs/assets/consumables/tire.webp` | `res/drawable-nodpi/tire_NNN.webp` | 11장 |
 | 공통 | `brake_pad` · 브레이크 패드 | `docs/assets/consumables/brake_pad.webp` | `res/drawable-nodpi/brake_pad_NNN.webp` | 11장 |
 | 공통 | `brake_disc` · 브레이크 디스크 | `docs/assets/consumables/brake_disc.webp` | `res/drawable-nodpi/brake_disc_NNN.webp` | 11장 |
 | 공통 | `tire_rotation` · 타이어 위치 교환 | `docs/assets/consumables/tire_rotation.webp` | `res/drawable-nodpi/tire_rotation_NNN.webp` | 11장 |

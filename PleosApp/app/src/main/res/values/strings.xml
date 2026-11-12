@@ -6,7 +6,10 @@
     <!-- S05 차량 탑뷰 홈 -->
     <string name="select_item">소모품을 선택하세요</string>
     <string name="oil_name">엔진오일</string>
-    <string name="tire_name">타이어</string>
+    <string name="tire_fl_name">앞 왼쪽 타이어</string>
+    <string name="tire_fr_name">앞 오른쪽 타이어</string>
+    <string name="tire_rl_name">뒤 왼쪽 타이어</string>
+    <string name="tire_rr_name">뒤 오른쪽 타이어</string>
     <string name="filter_name">에어컨 필터</string>
     <string name="air_filter_name">엔진 에어필터</string>
     <string name="wiper_name">와이퍼</string>

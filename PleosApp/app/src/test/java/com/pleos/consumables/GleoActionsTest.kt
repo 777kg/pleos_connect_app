@@ -9,10 +9,10 @@ import org.junit.Test
 
 class GleoActionsTest {
 
-    private val names = mapOf(Consumable.TIRE to "타이어", Consumable.FILTER to "에어컨 필터", Consumable.WIPER to "와이퍼")
+    private val names = mapOf(Consumable.TIRE_FL to "타이어", Consumable.FILTER to "에어컨 필터", Consumable.WIPER to "와이퍼")
     private val nameOf: (Consumable) -> String = { names[it] ?: it.key }
 
-    private fun record(km: Float) = ReplacementRecord(1, Consumable.TIRE, 0L, km, 0L, km, false, 1)
+    private fun record(km: Float) = ReplacementRecord(1, Consumable.TIRE_FL, 0L, km, 0L, km, false, 1)
 
     @Test
     fun `param reads plain and double-quoted ACTION_PARAM`() {
@@ -28,10 +28,20 @@ class GleoActionsTest {
     fun `itemOf maps voice keys, storage keys and Korean names`() {
         assertEquals(Consumable.FILTER, GleoActions.itemOf("cabin_air_filter", nameOf))
         assertEquals(Consumable.AIR_FILTER, GleoActions.itemOf("engine_air_filter", nameOf))
-        assertEquals(Consumable.TIRE, GleoActions.itemOf("TIRE", nameOf))
+        assertEquals(Consumable.TIRE_FL, GleoActions.itemOf("FRONT_LEFT_TIRE", nameOf))
+        assertEquals(Consumable.TIRE_RR, GleoActions.itemOf("rear_right_tire", nameOf))
+        assertNull(GleoActions.itemOf("tire", nameOf))
         assertEquals(Consumable.FILTER, GleoActions.itemOf("에어컨필터", nameOf))
         assertNull(GleoActions.itemOf("", nameOf))
         assertNull(GleoActions.itemOf("rocket", nameOf))
+    }
+
+    @Test
+    fun `tire without position asks which wheel`() {
+        val tire = GleoActions.missingItemAnswer(GleoActions.GET_STATUS, "tire")
+        assertEquals("asking", tire.status)
+        assertTrue(tire.message.contains("front left"))
+        assertEquals("Which consumable item should be checked?", GleoActions.missingItemAnswer(GleoActions.GET_STATUS, null).message)
     }
 
     @Test

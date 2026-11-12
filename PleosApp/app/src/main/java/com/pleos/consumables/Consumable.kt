@@ -5,6 +5,8 @@ package com.pleos.consumables
  * - [zone]: 홈(S05) 탑뷰 주변에서 놓이는 쪽(앞→뒤 순서로 정렬)
  * - [powertrain]: 내연기관·전기차 전용 항목 표시용. 차량 정보로 '해당 없음'만 안내하고 끄는 것은 사용자가 정합니다.
  * - [defaultOn]: 처음 설치 때 홈에 보이는지(설정에서 켜고 끔)
+ * - [side]: 탑뷰에서 놓일 쪽이 정해진 항목(위치별 타이어). 나머지는 덜 찬 열에 놓습니다.
+ * - [imageKey]: 단계 사진 파일 이름 앞부분. 위치별 타이어 4개는 같은 타이어 사진을 씁니다.
  * 교체 주기를 권장하지 않습니다(DECISIONS: 기준 거리는 사용자 설정).
  */
 enum class Consumable(
@@ -13,12 +15,18 @@ enum class Consumable(
     val zone: Zone,
     val powertrain: Powertrain,
     val defaultOn: Boolean,
+    val side: Side = Side.ANY,
+    val imageKey: String = key,
 ) {
     OIL("oil", R.string.oil_name, Zone.FRONT, Powertrain.ICE, true),
     AIR_FILTER("air_filter", R.string.air_filter_name, Zone.FRONT, Powertrain.ICE, true),
     WIPER("wiper", R.string.wiper_name, Zone.FRONT, Powertrain.ALL, true),
     FILTER("filter", R.string.filter_name, Zone.CABIN, Powertrain.ALL, true),
-    TIRE("tire", R.string.tire_name, Zone.WHEEL, Powertrain.ALL, true),
+    // 타이어는 위치마다 따로 기록합니다(2026-11-12 결정). 예전 단일 키 "tire"는 쓰지 않습니다.
+    TIRE_FL("tire_fl", R.string.tire_fl_name, Zone.WHEEL, Powertrain.ALL, true, Side.LEFT, "tire"),
+    TIRE_FR("tire_fr", R.string.tire_fr_name, Zone.WHEEL, Powertrain.ALL, true, Side.RIGHT, "tire"),
+    TIRE_RL("tire_rl", R.string.tire_rl_name, Zone.WHEEL, Powertrain.ALL, true, Side.LEFT, "tire"),
+    TIRE_RR("tire_rr", R.string.tire_rr_name, Zone.WHEEL, Powertrain.ALL, true, Side.RIGHT, "tire"),
     BRAKE_PAD("brake_pad", R.string.brake_pad_name, Zone.WHEEL, Powertrain.ALL, true),
     BRAKE_DISC("brake_disc", R.string.brake_disc_name, Zone.WHEEL, Powertrain.ALL, false),
     TIRE_ROTATION("tire_rotation", R.string.tire_rotation_name, Zone.WHEEL, Powertrain.ALL, false),
@@ -34,6 +42,8 @@ enum class Consumable(
     BATTERY_COOLANT("battery_coolant", R.string.battery_coolant_name, Zone.UNDER, Powertrain.EV, false);
 
     enum class Zone { FRONT, CABIN, WHEEL, UNDER, REAR }
+
+    enum class Side { ANY, LEFT, RIGHT }
 
     enum class Powertrain(val labelRes: Int) {
         ALL(R.string.group_common),
@@ -52,6 +62,12 @@ enum class Consumable(
         fun fromKey(key: String): Consumable? = entries.firstOrNull { it.key == key }
 
         val DEFAULT_ENABLED: Set<Consumable> = entries.filter { it.defaultOn }.toSet()
+
+        /** 위치별 타이어(앞 왼쪽·앞 오른쪽·뒤 왼쪽·뒤 오른쪽). */
+        val TIRES: List<Consumable> = listOf(TIRE_FL, TIRE_FR, TIRE_RL, TIRE_RR)
+
+        /** 위치별로 나누기 전 단일 타이어 키. 설정에 남아 있으면 위치별 4개로 바꿉니다. */
+        const val LEGACY_TIRE_KEY = "tire"
 
         /** 홈·이력 탭에 쓰는 순서: 차 앞쪽부터. */
         fun ordered(items: Collection<Consumable>): List<Consumable> =

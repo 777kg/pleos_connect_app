@@ -28,9 +28,10 @@ class GleoActionReceiver : BroadcastReceiver() {
         val store = RecordStore(app)
         val nameOf: (Consumable) -> String = { app.getString(it.nameRes) }
         val target: Consumable? = if (function == GleoActions.GET_STATUS) {
-            GleoActions.itemOf(GleoActions.paramFrom(intent, GleoActions.PARAM_ITEM), nameOf)
+            val raw = GleoActions.paramFrom(intent, GleoActions.PARAM_ITEM)
+            GleoActions.itemOf(raw, nameOf)
                 ?: run {
-                    GleoActions.send(app, GleoActions.missingItemAnswer(function))
+                    GleoActions.send(app, GleoActions.missingItemAnswer(function, raw))
                     return
                 }
         } else {

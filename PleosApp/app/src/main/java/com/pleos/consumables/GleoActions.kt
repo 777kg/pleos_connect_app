@@ -53,7 +53,10 @@ object GleoActions {
         "engine_air_filter" to Consumable.AIR_FILTER,
         "wiper_blade" to Consumable.WIPER,
         "cabin_air_filter" to Consumable.FILTER,
-        "tire" to Consumable.TIRE,
+        "front_left_tire" to Consumable.TIRE_FL,
+        "front_right_tire" to Consumable.TIRE_FR,
+        "rear_left_tire" to Consumable.TIRE_RL,
+        "rear_right_tire" to Consumable.TIRE_RR,
         "brake_pad" to Consumable.BRAKE_PAD,
         "brake_disc" to Consumable.BRAKE_DISC,
         "tire_rotation" to Consumable.TIRE_ROTATION,
@@ -117,8 +120,19 @@ object GleoActions {
     fun drivingAnswer(function: String) =
         Answer(function, "fail", "Consumable records can be checked only while the vehicle is parked.")
 
-    fun missingItemAnswer(function: String) =
-        Answer(function, "asking", "Which consumable item should be checked?", listOf(mapOf("missingField" to PARAM_ITEM)))
+    /**
+     * 항목을 모를 때 되묻는 답. 위치 없이 '타이어'만 말하면 어느 위치인지 묻습니다([value]는 받은 원문).
+     */
+    fun missingItemAnswer(function: String, value: String? = null) = Answer(
+        function, "asking",
+        if (isTireWithoutPosition(value)) "Which tire should be checked: front left, front right, rear left, or rear right?"
+        else "Which consumable item should be checked?",
+        listOf(mapOf("missingField" to PARAM_ITEM)),
+    )
+
+    /** 위치 없이 타이어만 가리키는 값인지("tire", "tires", "타이어"). */
+    fun isTireWithoutPosition(value: String?): Boolean =
+        value?.trim()?.lowercase(Locale.ROOT)?.replace(" ", "") in setOf("tire", "tires", "타이어")
 
     /** GET_CONSUMABLE_STATUS 답. 판정은 화면과 같은 [ConsumableCalculator.status]를 씁니다. */
     fun statusAnswer(name: String, status: ConsumableStatus): Answer = when (status) {

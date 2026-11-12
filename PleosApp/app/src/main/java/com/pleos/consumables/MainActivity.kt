@@ -85,9 +85,10 @@ class MainActivity : AppCompatActivity() {
         // QA-023: 보내는 쪽 패키지가 확인되지 않아 막지 않고 기록만 남깁니다(실제 Gleo 호출 때 확인용).
         android.util.Log.i("GleoActions", "OPEN_CONSUMABLE_RECORD from ${referrer?.host ?: "unknown"}")
         val function = GleoActions.OPEN_RECORD
-        val item = GleoActions.itemOf(GleoActions.paramFrom(intent, GleoActions.PARAM_ITEM)) { getString(it.nameRes) }
+        val raw = GleoActions.paramFrom(intent, GleoActions.PARAM_ITEM)
+        val item = GleoActions.itemOf(raw) { getString(it.nameRes) }
         val answer = when {
-            item == null -> GleoActions.missingItemAnswer(function)
+            item == null -> GleoActions.missingItemAnswer(function, raw)
             !viewModel.openFromVoice(item) -> GleoActions.notApplicableAnswer(function, getString(item.nameRes))
             else -> GleoActions.openAnswer(getString(item.nameRes), GleoActions.isParked(this))
         }
@@ -627,14 +628,21 @@ class MainActivity : AppCompatActivity() {
     private val settingRows = linkedMapOf<Consumable, ViewSettingRowBinding>()
     private val settingHeaders = linkedMapOf<Consumable.Powertrain, android.widget.TextView>()
 
-    /** 홈 양쪽 열: 차 앞쪽 항목부터 왼쪽·오른쪽을 번갈아 채웁니다. 목록이 바뀔 때만 다시 만듭니다. */
+    /**
+     * 홈 양쪽 열: 차 앞쪽 항목부터 채웁니다. 위치별 타이어는 자기 쪽 열(왼쪽·오른쪽)에, 나머지는 덜 찬 열(같으면 왼쪽)에 놓습니다.
+     * 목록이 바뀔 때만 다시 만듭니다.
+     */
     private fun syncHomeIcons(items: List<Consumable>) = with(binding.home) {
         if (homeIcons.keys.toList() == items) return@with
         leftColumn.removeAllViews()
         rightColumn.removeAllViews()
         homeIcons.clear()
-        items.forEachIndexed { index, item ->
-            val column = if (index % 2 == 0) leftColumn else rightColumn
+        items.forEach { item ->
+            val column = when (item.side) {
+                Consumable.Side.LEFT -> leftColumn
+                Consumable.Side.RIGHT -> rightColumn
+                Consumable.Side.ANY -> if (rightColumn.childCount < leftColumn.childCount) rightColumn else leftColumn
+            }
             val icon = ViewItemIconBinding.inflate(layoutInflater, column, false)
             icon.name.setText(item.nameRes)
             icon.root.setOnClickListener { viewModel.select(item) }

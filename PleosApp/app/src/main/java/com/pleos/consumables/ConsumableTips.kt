@@ -12,7 +12,8 @@ object ConsumableTips {
         Consumable.AIR_FILTER -> R.string.tip_role_air_filter to R.string.tip_late_air_filter
         Consumable.WIPER -> R.string.tip_role_wiper to R.string.tip_late_wiper
         Consumable.FILTER -> R.string.tip_role_filter to R.string.tip_late_filter
-        Consumable.TIRE -> R.string.tip_role_tire to R.string.tip_late_tire
+        Consumable.TIRE_FL, Consumable.TIRE_FR, Consumable.TIRE_RL, Consumable.TIRE_RR ->
+            R.string.tip_role_tire to R.string.tip_late_tire
         Consumable.BRAKE_PAD -> R.string.tip_role_brake_pad to R.string.tip_late_brake_pad
         Consumable.BRAKE_DISC -> R.string.tip_role_brake_disc to R.string.tip_late_brake_disc
         Consumable.TIRE_ROTATION -> R.string.tip_role_tire_rotation to R.string.tip_late_tire_rotation

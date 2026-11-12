@@ -138,23 +138,23 @@ class ConsumableCalculatorTest {
     )
 
     @Test fun urgencyOrderPutsLowestRemainingFirstThenGroupsInCatalogOrder() {
-        val items = listOf(Consumable.OIL, Consumable.TIRE, Consumable.FILTER, Consumable.WIPER, Consumable.BRAKE_PAD)
+        val items = listOf(Consumable.OIL, Consumable.TIRE_FL, Consumable.FILTER, Consumable.WIPER, Consumable.BRAKE_PAD)
         val statuses = mapOf(
             Consumable.OIL to ConsumableStatus.NoRecord,
-            Consumable.TIRE to normal(60.0),
+            Consumable.TIRE_FL to normal(60.0),
             Consumable.FILTER to ConsumableStatus.Unavailable(OdometerReading.Failed),
             Consumable.WIPER to normal(12.5),
             Consumable.BRAKE_PAD to ConsumableStatus.BaselineUnset(record(1, 0f, 0), 10f),
         )
         assertEquals(
-            listOf(Consumable.WIPER, Consumable.TIRE, Consumable.BRAKE_PAD, Consumable.OIL, Consumable.FILTER),
+            listOf(Consumable.WIPER, Consumable.TIRE_FL, Consumable.BRAKE_PAD, Consumable.OIL, Consumable.FILTER),
             ConsumableCalculator.urgencyOrder(items, statuses::getValue),
         )
         assertEquals(Consumable.WIPER, ConsumableCalculator.mostUrgent(items, statuses::getValue)?.first)
     }
 
     @Test fun mostUrgentIsNullWithoutNormalItems() {
-        val items = listOf(Consumable.OIL, Consumable.TIRE)
+        val items = listOf(Consumable.OIL, Consumable.TIRE_FL)
         assertEquals(null, ConsumableCalculator.mostUrgent(items) { ConsumableStatus.NoRecord })
     }
 
