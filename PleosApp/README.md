@@ -9,7 +9,7 @@ Android Automotive OS(Pleos Connect)용 Kotlin 앱입니다. 소모품(엔진오
 | 1 | 차량 누적 주행거리 조회(`OdometerSource`) + 정차 중 전용 처리 | 에뮬레이터 확인 |
 | 2 | 교체 기록·기준 거리 로컬 저장(`RecordStore`), 판정 로직(`ConsumableCalculator`), 화면 S05 홈·S01 상세·S04 새 기록 확인·S06 기준 거리 | 에뮬레이터 확인(1칸 배치 제외) |
 | 3 | S02 이력(최신순·마지막 기록 배지·개별 삭제·전체 삭제), S03 기록 수정(±100 km, ±1일·1시간·10분, 미래 시각 금지, 수정 표기) | 에뮬레이터 확인. 단위 테스트 12개 |
-| 4 | 소모품 18종 카탈로그(2026-11-12 타이어를 위치별 4개로 나눠 21종)(`Consumable`), 설정 S07(홈에 보일 항목 ON/OFF, `RecordStore.enabledItems`), 동력 방식 읽기(`VehicleInfoSource`, INFO_FUEL_TYPE·CAR_INFO)로 맞지 않는 항목 숨김, 반실사 소모품 이미지 18종×11단계, QA-009~012 반영 | 에뮬레이터 확인(EV로 읽힘) |
+| 4 | 소모품 18종 카탈로그(2026-11-12부터 타이어는 위치별 4개 항목, 종류 수는 1종으로 셈)(`Consumable`), 설정 S07(홈에 보일 항목 ON/OFF, `RecordStore.enabledItems`), 동력 방식 읽기(`VehicleInfoSource`, INFO_FUEL_TYPE·CAR_INFO)로 맞지 않는 항목 숨김, 반실사 소모품 이미지 18종×11단계, QA-009~012 반영 | 에뮬레이터 확인(EV로 읽힘) |
 
 소모품 이미지: `npm run image:codex -- --name <키> "설명"`으로 원본(`docs/assets/consumables/<키>.png`, Codex 이미지 생성 → 보관은 .webp)을 만들고 `python scripts/images/make_step_images.py --from-dir docs/assets/consumables`로 `res/drawable-nodpi/`에 11단계씩 넣습니다. `ConsumableImages`가 이름으로 찾아 씁니다. 새 소모품은 `Consumable`에 한 줄 + 문자열 + 이미지로 추가합니다.
 규칙 출처: `../.claude/skills/pleos-connect-dev`, `../PLEOS_DEV_NOTES.md`

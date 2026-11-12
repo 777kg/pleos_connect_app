@@ -17,7 +17,7 @@
    adb install apk/777kg_내차량소모품_release.apk
    ```
 2. Virtual Console 열기: `adb forward tcp:8088 tcp:8088` → 브라우저 `http://127.0.0.1:8088/`
-3. 기어 **P**, Odometer를 지금 값보다 큰 값으로 설정(에뮬레이터는 값을 올리기만 받음). 2026-11-12 녹화는 55,800 km에서 시작해 63,400 km로 올림(7,600 km, 24%)
+3. 기어 **P**, Odometer를 지금 값보다 큰 값으로 설정(에뮬레이터는 값을 올리기만 받음). 2026-11-12 최종 녹화는 63,400 km에서 시작해 71,000 km로 올림(7,600 km, 24%)
 4. 앱 설정 → 차량 동력 → **내연기관**(에뮬레이터는 전기차로 알려 주므로 엔진오일을 보이게 함). 이 단계는 녹화 전에 해 둔다.
 
 ## 장면
@@ -31,7 +31,7 @@
 | 6 | 엔진오일 상세 → 홈 | '다시 확인' → 교체 후 7,600 km, 24% 남음 → 홈 아이콘 비율 | 교체 후 달린 거리와 남은 비율 | 20초 |
 | 7 | Virtual Console 기어 D | 앱이 가려지고 시스템 주행 안내 | 주행 중에는 값과 조작을 모두 숨깁니다 | 10초 |
 | 8 | (주행 중) Gleo 호출 재현 | `GET_CONSUMABLE_STATUS engine_oil` → 로그 fail "…only while the vehicle is parked." | 주행 중 음성 질문엔 정차 후 확인하라고만 답합니다 | 15초 |
-| 9 | 기어 P → Gleo 호출 재현 | GET → success "…7,600 km… 24% …", OPEN → 엔진오일 화면이 열림 | 정차하면 음성으로 묻고 화면을 바로 엽니다 | 25초 |
+| 9 | 기어 P → Gleo 호출 재현 | GET → success "…7,600 km… 24% …", OPEN `front_left_tire` → 앞 왼쪽 타이어 화면이 열림(타이어는 위치별 4개) | 정차하면 음성으로 묻고 화면을 바로 엽니다 | 25초 |
 | 10 | 홈 목록 보기 | 목록 전환, 남은 비율 적은 순 | 한눈에 보는 교체 시점 | 10초 |
 | 11 | 마무리 | 탑뷰 홈 정지 화면 | 내 차량 소모품 · 팀 777kg | 5초 |
 
@@ -50,6 +50,6 @@ adb logcat -s GleoActions
 
 ## 녹화 방법
 - **권장: 에뮬레이터 바깥에서 녹화** `adb emu screenrecord start --size 1920x1080 --fps 30 --time-limit 600 <PC 경로>.webm` → 끝나면 `adb emu screenrecord stop`. 2026-11-12에 기기 안 `screenrecord`(1920x1080)로 찍다가 부하로 시스템이 재시작됨(watchdog). 앱 문제 아님.
-- Virtual Console은 HTTP로도 바꿀 수 있다(콘솔 페이지를 브라우저에 열어 둔 상태에서): `curl -X PUT "http://127.0.0.1:8088/vehicle/odometer?traveled_distance_km=63400"`, `curl -X PUT "http://127.0.0.1:8088/vehicle/gear?gear=Drive"`
+- Virtual Console은 HTTP로도 바꿀 수 있다(콘솔 페이지를 브라우저에 열어 **앞에 띄워 둔** 상태에서. 탭이 뒤로 가면 `emulator_inactive`로 거부됨): `curl -X PUT "http://127.0.0.1:8088/vehicle/odometer?traveled_distance_km=63400"`, `curl -X PUT "http://127.0.0.1:8088/vehicle/gear?gear=Drive"`
 - 원본은 `docs/contest/시연영상_원본.webm`(로컬 전용, `.gitignore`)
 - 이 PC에는 ffmpeg가 없어 클립 합치기·자막은 영상 편집기(Clipchamp 등)에서 한다. 확인 필요.
